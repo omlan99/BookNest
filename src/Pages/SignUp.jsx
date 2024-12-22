@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
+import { FcGoogle } from "react-icons/fc";
 
 const SignUp = () => {
     const {user, setUser, createUser, updateUser} =useContext(AuthContext)
     console.log(user)
+    const navigate = useNavigate()
     const handleSubmit = e => {
       e.preventDefault()
       const form = e.target;
@@ -18,6 +20,12 @@ const SignUp = () => {
         console.log(result.user)
         setUser(result.user)
         updateUser({displayName : name , photoURL : photo})
+        .then(() => {
+          navigate('/')
+        })
+        .catch(err =>{
+          console.log(err)
+        })
 
       })
       .catch(error => {
@@ -29,7 +37,9 @@ const SignUp = () => {
       <div className="hero bg-base-200 min-h-screen ">
       <div className="hero-content flex-col lg:flex-row-reverse ">
         <div className="card bg-base-100 w-full max-w-xl  shadow-2xl">
-          <h1 className="text-3xl font-bold">Sign Up now!</h1>
+          <h1 className="text-3xl font-bold ">Sign Up now!</h1>
+
+       
           <form className="w-96 m-4" onSubmit={handleSubmit}>
           <div className="form-control" >
               <label className="label ">
@@ -85,6 +95,9 @@ const SignUp = () => {
             </div>
           </form>
           <div className="divider"></div>
+          <div className='mb-4' >
+          <button  className="btn btn-wide bg-white border-gray-500 text-xl font-medium w-full"><FcGoogle /> Google</button>
+          </div>
           <div>
              <p>Already have an account? Please <Link to={'/login'} className="text-purple-500"> Log In</Link></p>
           </div>

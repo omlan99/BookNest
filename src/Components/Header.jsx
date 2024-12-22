@@ -1,10 +1,14 @@
-import { Link } from "react-router-dom"
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../Context/AuthProvider";
 
 const Header = () => {
+  const { user, signOutUser } = useContext(AuthContext);
+  console.log(user);
   const links = (
     <>
       <li>
-        <Link to = {'/'}>Home</Link>
+        <Link to={"/"}>Home</Link>
       </li>
       <li>
         <Link>All Books</Link>
@@ -15,7 +19,6 @@ const Header = () => {
       <li>
         <Link>Borrowed Books</Link>
       </li>
-      
     </>
   );
   return (
@@ -43,24 +46,34 @@ const Header = () => {
               tabIndex="0"
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow "
             >
-            {
-                links
-            }
+              {links}
             </ul>
           </div>
           <a className="btn btn-ghost text-xl">Book Nest</a>
         </div>
-        <div className="navbar-center hidden lg:flex ">
-        
-        </div>
+        <div className="navbar-center hidden lg:flex "></div>
         <div className="navbar-end gap-3">
-        <ul className="menu menu-horizontal px-1 flex gap-1">
-          {
-            links
-          }
-          </ul>
-          <Link to='/login' className="btn">Log In</Link>
-          <Link to='/signUp' className="btn">Sign Up</Link>
+          <ul className="menu menu-horizontal px-1 flex gap-1">{links}</ul>
+          {user ? (
+            <>
+              
+              <div className="h-[40px] w-[40px]  rounded-full bg-black overflow-hidden">
+              <img className=" object-cover object-center" src={user.photoURL} alt="" />
+              </div>
+              <Link to="/login" onClick={signOutUser} className="btn">
+                Log Out
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="btn">
+                Log In
+              </Link>
+              <Link to="/signUp" className="btn">
+                Sign Up
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>
