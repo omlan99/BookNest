@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 const SignUp = () => {
+    const {user, createUser} =useContext(AuthContext)
     const handleSubmit = e => {
       e.preventDefault()
       const form = e.target;
@@ -10,6 +11,14 @@ const SignUp = () => {
       const photo = form.photo.value;
       const password = form.password.value;
       console.log(name, email , photo, password)
+      createUser(email,password)
+      .then(result =>{
+        console.log(result.user)
+      })
+      .catch(error => {
+        console.log(error.message)
+      })
+
     }
     return (
       <div className="hero bg-base-200 min-h-screen ">
