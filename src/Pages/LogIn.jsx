@@ -1,10 +1,13 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
-
+import { FcGoogle } from "react-icons/fc";
 const LogIn = () => {
-  const {user, signInUser} = useContext(AuthContext)
-
+  const {user, signInUser,googleSignIn} = useContext(AuthContext)
+  const navigate = useNavigate()
+  const handleGoogle = () => {
+    googleSignIn()
+  }
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -14,6 +17,7 @@ const LogIn = () => {
     signInUser(email, password)
     .then(result =>{
       console.log(result.user)
+       navigate('/')
     })
     .catch(error =>{
       console.log(error.message)
@@ -59,6 +63,10 @@ const LogIn = () => {
             </div>
           </form>
           <div className="divider"></div>
+          <div className='mb-4' >
+            <button onClick={handleGoogle} className="btn btn-wide bg-white border-gray-500 text-xl font-medium w-full"><FcGoogle /> Google</button>
+          </div>
+                  
           <div>
             <p>
               Don't have an account? Please{" "}
