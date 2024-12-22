@@ -5,12 +5,13 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createContext } from "react";
 import auth from "../Firebase/Firebase.init";
 
-const AuthContext = createContext(null);
+export const AuthContext = createContext(null);
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -36,6 +37,9 @@ const AuthProvider = ({ children }) => {
       unsubscribe();
     };
   }, []);
+  const updateUser= (updateData) =>{
+    return updateProfile(auth.currentUser, updateData)
+  }
   const signOutUser = () => {
     return signOut(auth);
   };
@@ -43,11 +47,14 @@ const AuthProvider = ({ children }) => {
 
   const authValue = {
     user,
+    setUser,
     loader,
     createUser,
     signInUser,
     googleSignIn,
-    signOut,
+    signOutUser,
+    updateUser
+
   };
   return (
     <AuthContext.Provider value={authValue}>{children}</AuthContext.Provider>
