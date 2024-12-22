@@ -4,9 +4,11 @@ import { AuthContext } from '../Context/AuthProvider';
 import { FcGoogle } from "react-icons/fc";
 
 const SignUp = () => {
-    const {user, setUser, createUser, updateUser} =useContext(AuthContext)
-    console.log(user)
+    const {setUser, createUser, updateUser, googleSignIn} =useContext(AuthContext)
     const navigate = useNavigate()
+    const handleGoogle = () => {
+      googleSignIn()
+    }
     const handleSubmit = e => {
       e.preventDefault()
       const form = e.target;
@@ -96,7 +98,7 @@ const SignUp = () => {
           </form>
           <div className="divider"></div>
           <div className='mb-4' >
-          <button  className="btn btn-wide bg-white border-gray-500 text-xl font-medium w-full"><FcGoogle /> Google</button>
+          <button onClick={handleGoogle} className="btn btn-wide bg-white border-gray-500 text-xl font-medium w-full"><FcGoogle /> Google</button>
           </div>
           <div>
              <p>Already have an account? Please <Link to={'/login'} className="text-purple-500"> Log In</Link></p>
