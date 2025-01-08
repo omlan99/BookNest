@@ -3,6 +3,7 @@ import Banner from "../Components/Banner";
 import Categories from "../Components/Categories";
 import FilteredBooks from "../Components/FilteredBooks";
 import About from "../Components/About";
+import Newsletter from "../Components/Newsletter";
 
 const Home = () => {
     const data =  useLoaderData()
@@ -14,6 +15,7 @@ const Home = () => {
             <Categories bookData = {data}></Categories>
             <FilteredBooks bookData = {data}></FilteredBooks>
             <About></About>
+            <Newsletter></Newsletter>
         </div>
     );
 };
