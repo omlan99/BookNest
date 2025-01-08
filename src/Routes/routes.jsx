@@ -4,11 +4,27 @@ import Layout from "../Layout/Layout";
 import SignUp from "../Pages/SignUp";
 import LogIn from "../Pages/LogIn";
 import AllBooks from "../Pages/AllBooks";
+import Home from "../Pages/Home";
+import Details from "../Pages/Details";
+import PrivateRoute from "./PrivateRoute";
+import FilteredBooks from "../Components/FilteredBooks";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout></Layout>,
     children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+        loader : () => fetch(`http://localhost:5000`),
+        children : [
+          {
+            path : '/category/:category',
+            element : <FilteredBooks></FilteredBooks>,
+            loader : ({params}) => fetch(`http://localhost:5000/category?category=${params.id}`)
+          }
+        ]
+      },
       {
         path: "/login",
         element: <LogIn></LogIn>,
@@ -19,7 +35,12 @@ const router = createBrowserRouter([
       },
       {
         path : '/allBooks',
-        element : <AllBooks></AllBooks>
+        element :<PrivateRoute><AllBooks></AllBooks></PrivateRoute>
+      },
+      {
+        path : "/book_details/:id",
+        element : <Details></Details>,
+        loader : ({params}) => fetch(`http://localhost:5000/book_details/${params.id}`)
       }
     ],
   },

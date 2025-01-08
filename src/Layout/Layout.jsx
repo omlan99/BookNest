@@ -1,11 +1,12 @@
 import { Outlet } from "react-router-dom";
 import Footer from "../Components/Footer";
-import Header from "../Components/Header";
+
+import Navbar from "../Components/Navbar";
 
 const Layout = () => {
     return (
         <div className="container mx-auto">
-            <Header></Header>
+            <Navbar></Navbar>
             <div className="min-h-svh">
             <Outlet></Outlet>
             </div>

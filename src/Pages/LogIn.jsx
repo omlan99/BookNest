@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
-import { FcGoogle } from "react-icons/fc";
+    import { FcGoogle } from "react-icons/fc";
 const LogIn = () => {
   const {user, signInUser,googleSignIn} = useContext(AuthContext)
   const navigate = useNavigate()
@@ -28,7 +28,7 @@ const LogIn = () => {
       <div className="hero-content flex-col lg:flex-row-reverse ">
         <div className="card bg-base-100 w-full max-w-xl  shadow-2xl">
           <h1 className="text-3xl font-bold">Login now!</h1>
-          <form className="w-96 m-4" onSubmit={handleLogin}>
+          <form className="max-w-2xl m-4" onSubmit={handleLogin}>
             <div className="form-control">
               <label className="label ">
                 <span className="label-text ">Email</span>

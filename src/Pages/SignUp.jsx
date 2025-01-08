@@ -9,6 +9,10 @@ const SignUp = () => {
     const handleGoogle = () => {
       googleSignIn()
     }
+    // const validatePassword = (password) => {
+    //   const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    //   return passwordRegex.test(password);
+    // };
     const handleSubmit = e => {
       e.preventDefault()
       const form = e.target;
@@ -17,6 +21,9 @@ const SignUp = () => {
       const photo = form.photo.value;
       const password = form.password.value;
       console.log(name, email , photo, password)
+      // if (!validatePassword(password)) {
+      //   console.log("Password must be at least 8 characters, include letters and numbers");
+      // }
       createUser(email,password)
       .then(result =>{
         console.log(result.user)
@@ -42,7 +49,7 @@ const SignUp = () => {
           <h1 className="text-3xl font-bold ">Sign Up now!</h1>
 
        
-          <form className="w-96 m-4" onSubmit={handleSubmit}>
+          <form className=" m-4" onSubmit={handleSubmit}>
           <div className="form-control" >
               <label className="label ">
                 <span className="label-text ">Name</span>
@@ -98,7 +105,7 @@ const SignUp = () => {
           </form>
           <div className="divider"></div>
           <div className='mb-4' >
-          <button onClick={handleGoogle} className="btn btn-wide bg-white border-gray-500 text-xl font-medium w-full"><FcGoogle /> Google</button>
+          <button onClick={handleGoogle} className="btn  bg-white border-gray-500 text-xl font-medium btn-wide"><FcGoogle /> Google</button>
           </div>
           <div>
              <p>Already have an account? Please <Link to={'/login'} className="text-purple-500"> Log In</Link></p>
