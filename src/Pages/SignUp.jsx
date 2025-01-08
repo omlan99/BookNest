@@ -1,119 +1,165 @@
-import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../Context/AuthProvider';
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Context/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
-
+import { toast } from "react-toastify";
 const SignUp = () => {
-    const {setUser, createUser, updateUser, googleSignIn} =useContext(AuthContext)
-    const navigate = useNavigate()
-    const handleGoogle = () => {
-      googleSignIn()
-    }
-    // const validatePassword = (password) => {
-    //   const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
-    //   return passwordRegex.test(password);
-    // };
-    const handleSubmit = e => {
-      e.preventDefault()
-      const form = e.target;
-      const name = form.name.value;
-      const email = form.email.value;
-      const photo = form.photo.value;
-      const password = form.password.value;
-      console.log(name, email , photo, password)
-      // if (!validatePassword(password)) {
-      //   console.log("Password must be at least 8 characters, include letters and numbers");
-      // }
-      createUser(email,password)
-      .then(result =>{
-        console.log(result.user)
-        setUser(result.user)
-        updateUser({displayName : name , photoURL : photo})
-        .then(() => {
-          navigate('/')
+  const { createUser, updateUser, setUser, googleSignIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleGoogle = () => {
+    googleSignIn()
+    navigate("/");
+  }
+
+  const validatePassword = (password) => {
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    return passwordRegex.test(password);
+  };
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const photo = form.photo.value;
+    const password = form.password.value;
+    if (!validatePassword(password)) {
+        return toast.error("Password must have at least 6 characters, including uppercase and lowercase.", {position : "top-center"});
+      }
+    createUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        setUser(result.user);
+        updateUser({ displayName: name, photoURL: photo })
+          .then(() => {
+            navigate("/");
+            toast.success(`${name} created a new account`, {position : 'top-center'})
+          })
+          .catch((err) => {
+              console.log(err);
+            });
         })
-        .catch(err =>{
-          console.log(err)
-        })
+        .catch((error) => {
+          toast.error('You already have an account, Please Login', {position:'top-center'})
+        console.log(error.message);
+      });
+  };
 
-      })
-      .catch(error => {
-        console.log(error.message)
-      })
-
-    }
-    return (
-      <div className="hero bg-base-200 min-h-screen ">
-      <div className="hero-content flex-col lg:flex-row-reverse ">
-        <div className="card bg-base-100 w-full max-w-xl  shadow-2xl">
-          <h1 className="text-3xl font-bold ">Sign Up now!</h1>
-
+  return (
+    <div>
+      <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
        
-          <form className=" m-4" onSubmit={handleSubmit}>
-          <div className="form-control" >
-              <label className="label ">
-                <span className="label-text ">Name</span>
+          <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+            Create a new account
+          </h2>
+        </div>
+
+        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <form class="space-y-6" onSubmit={handleSubmit}>
+            <div>
+              <label
+                for="email"
+                class="block text-sm/6 font-medium text-gray-900"
+              >
+                User Name
               </label>
-              <input
-                type="text"
-                name='name'
-                placeholder="User Name"
-                className="input input-bordered"
-                required
-              />
+              <div class="mt-2">
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                />
+              </div>
             </div>
-            <div className="form-control">
-              <label className="label ">
-                <span className="label-text ">Email</span>
+
+            <div>
+              <label
+                for="email"
+                class="block text-sm/6 font-medium text-gray-900"
+              >
+                Upload a profile Photo
               </label>
-              <input
-                name='email'
-                type="email"
-                placeholder="email"
-                className="input input-bordered"
-                required
-              />
+              <div class="mt-2">
+                <input
+                  type="url"
+                  name="photo"
+                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                />
+              </div>
             </div>
-            <div className="form-control">
-              <label className="label ">
-                <span className="label-text ">Photo URL</span>
+
+            <div>
+              <label
+                for="email"
+                class="block text-sm/6 font-medium text-gray-900"
+              >
+                Email address
               </label>
-              <input
-                type="url"
-                name='photo'
-                placeholder="Photo URL"
-                className="input input-bordered"
-                required
-              />
+              <div class="mt-2">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  autocomplete="email"
+                  required
+                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                />
+              </div>
             </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <input
-                type="password"
-                name='password'
-                placeholder="password"
-                className="input input-bordered"
-                required
-              />
-             
+
+            <div>
+              <div class="flex items-center justify-between">
+                <label
+                  for="password"
+                  class="block text-sm/6 font-medium text-gray-900"
+                >
+                  Password
+                </label>
+              </div>
+              <div class="mt-2 relative">
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  autocomplete="current-password"
+                  required
+                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                />
+              </div>
             </div>
-            <div className="form-control mt-6">
-              <button className="btn btn-primary">Sign Up</button>
+
+            <div>
+              <button
+                type="submit"
+                class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Register
+              </button>
             </div>
           </form>
-          <div className="divider"></div>
-          <div className='mb-4' >
-          <button onClick={handleGoogle} className="btn  bg-white border-gray-500 text-xl font-medium btn-wide"><FcGoogle /> Google</button>
+          <div className="my-4">
+            <button
+              onClick={handleGoogle}
+              className="btn  bg-white border-gray-500 text-xl font-medium w-full"
+            >
+              <FcGoogle /> Google
+            </button>
           </div>
-          <div>
-             <p>Already have an account? Please <Link to={'/login'} className="text-purple-500"> Log In</Link></p>
-          </div>
+          <p class="mt-10 text-center text-sm/6 text-gray-500">
+            Already have an account.
+            <Link
+              to={"/login"}
+              class="font-semibold text-indigo-600 hover:text-indigo-500 ml-2"
+            >
+              Login Here
+            </Link>
+          </p>
         </div>
       </div>
     </div>
-    );
+  );
 };
 
-export default SignUp;
+export default SignUp;  

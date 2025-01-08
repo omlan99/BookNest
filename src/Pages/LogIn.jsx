@@ -1,13 +1,24 @@
-import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useRef } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
-    import { FcGoogle } from "react-icons/fc";
-const LogIn = () => {
-  const {user, signInUser,googleSignIn} = useContext(AuthContext)
-  const navigate = useNavigate()
-  const handleGoogle = () => {
-    googleSignIn()
+import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
+const Login = () => {
+  const location = useLocation();
+  console.log(location)
+  const { signInUser, googleSignIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const emailRef = useRef()
+  const handleGoogle = async () => {
+   await googleSignIn();
+    navigate('/')
+  };
+ useEffect(() => {
+  if (location.state?.email) {
+    navigate(location.pathname, { replace: true, state: null });
   }
+}, [location, navigate]);
+
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -15,71 +26,116 @@ const LogIn = () => {
     const password = form.password.value;
     console.log(email, password);
     signInUser(email, password)
-    .then(result =>{
-      console.log(result.user)
-       navigate('/')
-    })
-    .catch(error =>{
-      console.log(error.message)
-    })
+      .then((result) => {
+        console.log(result.user);
+        toast.success("Login Successfull", {
+          position: "top-center",
+        })
+        navigate("/", { replace: true, state: null });
+      })
+      .catch((error) => {
+        // console.log(error.message);
+        toast.error("Email and Password did not mathced", {
+          position: "top-center",
+        });
+      });
   };
+  const handleForget = () => {
+    const email = emailRef.current?.value;
+    navigate('/forgetPassword', {state : {email}})
+  }
   return (
-    <div className="hero bg-base-200 min-h-screen ">
-      <div className="hero-content flex-col lg:flex-row-reverse ">
-        <div className="card bg-base-100 w-full max-w-xl  shadow-2xl">
-          <h1 className="text-3xl font-bold">Login now!</h1>
-          <form className="max-w-2xl m-4" onSubmit={handleLogin}>
-            <div className="form-control">
-              <label className="label ">
-                <span className="label-text ">Email</span>
+    <div>
+      <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+         
+          <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+            Sign in to your account
+          </h2>
+        </div>
+
+        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <form class="space-y-6" onSubmit={handleLogin}>
+            <div>
+              <label
+                for="email"
+                class="block text-sm/6 font-medium text-gray-900"
+              >
+                Email address
               </label>
-              <input
-                name="email"
-                type="email"
-                placeholder="email"
-                className="input input-bordered"
-                required
-              />
+              <div class="mt-2">
+                <input
+                  ref={emailRef}
+                  type="email"
+                  name="email"
+                  id="email"
+                  autocomplete="email"
+                  required
+                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                />
+              </div>
             </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <input
-                name="password"
-                type="password"
-                placeholder="password"
-                className="input input-bordered"
-                required
-              />
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
-              </label>
+
+            <div>
+              <div class="flex items-center justify-between">
+                <label
+                  for="password"
+                  class="block text-sm/6 font-medium text-gray-900"
+                >
+                  Password
+                </label>
+                <div class="text-sm">
+                  <button
+                    type="button"
+                   onClick={handleForget}
+                    class="font-semibold text-indigo-600 hover:text-indigo-500"
+                  >
+                    Forgot password?
+                  </button>
+                </div>  
+              </div>
+              <div class="mt-2">
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  autocomplete="current-password"
+                  required
+                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                />
+              </div>
             </div>
-            <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+
+            <div>
+              <button
+                type="submit"
+                class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Login
+              </button>
             </div>
           </form>
-          <div className="divider"></div>
-          <div className='mb-4' >
-            <button onClick={handleGoogle} className="btn btn-wide bg-white border-gray-500 text-xl font-medium w-full"><FcGoogle /> Google</button>
+          <div className="my-4">
+            <button
+              onClick={handleGoogle}
+              className="btn  bg-white border-gray-500 text-xl font-medium w-full"
+            >
+              <FcGoogle /> Google
+            </button>
           </div>
-                  
-          <div>
-            <p>
-              Don't have an account? Please{" "}
-              <Link to={"/signUp"} className="text-purple-500">
-                {" "}
-                Sign Up
-              </Link>
-            </p>
-          </div>
+          <p class="mt-10 text-center text-sm/6 text-gray-500">
+            Not a member?
+            <Link
+              to={"/signup"}
+              class="font-semibold text-indigo-600 hover:text-indigo-500 ml-2"
+            >
+              Create a new account.
+            </Link>
+          </p>
         </div>
       </div>
     </div>
   );
 };
 
-export default LogIn;
+export default Login;
