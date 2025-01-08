@@ -33,7 +33,9 @@ const About = () => {
               it.
             </p>
           </div>
-          <button className="btn bg-[#018574] text-white font-bold">More About Us</button>
+          <div className="py-4">
+            <button className="btn bg-[#018574] text-white font-bold">More About Us</button>
+            </div>
         </div>
         <div >
             <Lottie animationData={Animationdata}></Lottie>

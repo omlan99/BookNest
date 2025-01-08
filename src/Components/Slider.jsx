@@ -4,6 +4,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import "swiper/css"
 import 'swiper/css/pagination'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import img1 from '../assets/image1.jpg'
+import img2 from '../assets/image2.jpg'
+import img3 from '../assets/image3.jpg'
+
 // import './styles.css'
 const Slider = () => {
     return (
@@ -15,19 +19,21 @@ const Slider = () => {
                 autoplay = {{
                     delay :2000,
                     disableOnInteraction :false,
+                    pauseOnMouseEnter: true,
                 }}
                 pagination={
                     {
                         clickable:true,
                     }
                 }
+                loop = {true}
                 navigation={true}
                 className='mySwiper'
             >
-                <SwiperSlide>slider 1</SwiperSlide>
-                <SwiperSlide>Slider 2</SwiperSlide>
-                <SwiperSlide>Slider 3</SwiperSlide>
-                <SwiperSlide>Slider 4</SwiperSlide>
+                <SwiperSlide><img src={img1} alt="" /></SwiperSlide>
+                <SwiperSlide><img src={img2} alt="" /></SwiperSlide>
+                <SwiperSlide><img src={img3} alt="" /></SwiperSlide>
+              
             </Swiper>
         </div>
     );
