@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
+import axios from "axios";
 
 const Details = () => {
   const { user } = useContext(AuthContext);
@@ -65,15 +66,17 @@ const Details = () => {
     }
   };
   const handleClick = () => {
-    fetch(`http://localhost:5000/borrow_books`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newData),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+    axios.get('http://localhost:5000/borrow_books', newData)
+    .then(res => console.log(res.data))
+  //   fetch(`http://localhost:5000/borrow_books`, {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(newData),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data));
   };
   return (
     <div>
@@ -81,7 +84,7 @@ const Details = () => {
         <div className="h-[500px] w-[380px] overflow-hidden m-5">
           <img src={image} className="max-w-sm rounded-lg shadow-2xl" />
         </div>
-        <div className="text-left my-5 text-wrap  w-1/2">
+        <div className="text-left my-5 text-wrap  w-1/2 px-4">
           <h1 className="text-5xl font-bold mb-4">{bookName}</h1>
           <p className="py-1 font-semibold">Overview :</p>
           <p>{review}</p>
@@ -94,7 +97,7 @@ const Details = () => {
           <p className="py-1 font-semibold">Available Copy : {quantity}</p>
 
           <button
-            className="btn btn-primary py-2 mt-5"
+            className="btn btn-primary btn-wide py-2 mt-5"
             onClick={() => document.getElementById("my_modal_4").showModal()}
           >
             Borrow
