@@ -20,18 +20,22 @@ const AuthProvider = ({ children }) => {
   const [loader, setLoader] = useState(true);
 
   const createUser = (email, password) => {
+    setLoader(true)
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const signInUser = (email, password) => {
+    setLoader(true)
     return signInWithEmailAndPassword(auth, email, password);
   };
   const googleSignIn = () => {
+    setLoader(true)
     return signInWithPopup(auth, googleProvider);
   };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
       console.log("User logged in ", loggedUser);
       setUser(loggedUser);
+      setLoader(false)
     });
     return () => {
       unsubscribe();
@@ -56,7 +60,7 @@ const AuthProvider = ({ children }) => {
     updateUser
 
   };
-  return (
+  return (                                                                  
     <AuthContext.Provider value={authValue}>{children}</AuthContext.Provider>
   );
 };

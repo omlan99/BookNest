@@ -60,7 +60,7 @@ const SignUp = () => {
             <div>
               <label
                 for="email"
-                class="block text-sm/6 font-medium text-gray-900"
+                class="block text-sm/6 font-medium text-gray-900 text-left"
               >
                 User Name
               </label>
@@ -77,7 +77,7 @@ const SignUp = () => {
             <div>
               <label
                 for="email"
-                class="block text-sm/6 font-medium text-gray-900"
+                class="block text-sm/6 font-medium text-gray-900 text-left"
               >
                 Upload a profile Photo
               </label>
@@ -93,7 +93,7 @@ const SignUp = () => {
             <div>
               <label
                 for="email"
-                class="block text-sm/6 font-medium text-gray-900"
+                class="block text-sm/6 font-medium text-gray-900 text-left"
               >
                 Email address
               </label>

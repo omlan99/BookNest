@@ -26,6 +26,7 @@ const Slider = () => {
                         clickable:true,
                     }
                 }
+                
                 loop = {true}
                 navigation={true}
                 className='mySwiper'

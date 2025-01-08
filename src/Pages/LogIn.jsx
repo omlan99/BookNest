@@ -6,18 +6,19 @@ import { toast } from "react-toastify";
 const Login = () => {
   const location = useLocation();
   console.log(location)
-  const { signInUser, googleSignIn } = useContext(AuthContext);
+  const { signInUser, googleSignIn, loader} = useContext(AuthContext);
+  console.log(loader)
   const navigate = useNavigate();
   const emailRef = useRef()
   const handleGoogle = async () => {
    await googleSignIn();
     navigate('/')
   };
- useEffect(() => {
-  if (location.state?.email) {
-    navigate(location.pathname, { replace: true, state: null });
-  }
-}, [location, navigate]);
+//  useEffect(() => {
+//   if (location.state?.email) {
+//     navigate(location.pathname, { replace: true, state: null });
+//   }
+// }, [location, navigate]);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -40,10 +41,10 @@ const Login = () => {
         });
       });
   };
-  const handleForget = () => {
-    const email = emailRef.current?.value;
-    navigate('/forgetPassword', {state : {email}})
-  }
+  // const handleForget = () => {
+  //   const email = emailRef.current?.value;
+  //   navigate('/forgetPassword', {state : {email}})
+  // }
   return (
     <div>
       <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
@@ -59,7 +60,7 @@ const Login = () => {
             <div>
               <label
                 for="email"
-                class="block text-sm/6 font-medium text-gray-900"
+                class="block text-sm/6 font-medium text-gray-900 text-left"
               >
                 Email address
               </label>
@@ -87,7 +88,7 @@ const Login = () => {
                 <div class="text-sm">
                   <button
                     type="button"
-                   onClick={handleForget}
+                  //  onClick={handleForget}
                     class="font-semibold text-indigo-600 hover:text-indigo-500"
                   >
                     Forgot password?

@@ -9,6 +9,7 @@ import Details from "../Pages/Details";
 import PrivateRoute from "./PrivateRoute";
 import FilteredBooks from "../Components/FilteredBooks";
 import ErrorPage from "../Pages/ErrorPage";
+import AddBook from "../Pages/AddBook";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,7 +44,12 @@ const router = createBrowserRouter([
         path : "/book_details/:id",
         element : <Details></Details>,
         loader : ({params}) => fetch(`http://localhost:5000/book_details/${params.id}`)
+      },
+      {
+        path: "/addBooks",
+        element :<AddBook></AddBook>
       }
+
     ],
   },
 ]);
