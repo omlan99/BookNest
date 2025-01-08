@@ -1,16 +1,31 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import axios from "axios";
+import React from "react";
+import { useForm } from "react-hook-form";
 import { FaChevronDown } from "react-icons/fa6";
-
+import Swal from "sweetalert2";
 
 const AddBook = () => {
-    const {handleSubmit,register,reset, formState:{errors}} = useForm()
-    const onSubmit = data =>{
-        console.log(data)
-        reset()
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = async (data) => {
+    try {
+      const response = await axios.post("http://localhost:5000/addBooks", data);
+      Swal.fire({
+        title: "Book Added Succesfully",
+        icon: "success",
+    });
+    console.log(data);
+    reset();
+    } catch(error) {
+        console.log('error found', error)
     }
-    return (
-        <div className="space-y-12 ">
+  };
+  return (
+    <div className="space-y-12 ">
       <h1 className="text-5xl text-center py-6 font-bold">Add a new Visa</h1>
       <form className="px-6 " onSubmit={handleSubmit(onSubmit)}>
         <div className="border-b border-gray-900/10 pb-12">
@@ -140,7 +155,6 @@ const AddBook = () => {
                   id="yearOfPublishing"
                   {...register("yearOfPublishing", { required: true })}
                   type="number"
-                  
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
               </div>
@@ -157,7 +171,6 @@ const AddBook = () => {
                   id="totalPages"
                   {...register("totalPages", { required: true })}
                   type="number"
-                  
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
               </div>
@@ -172,7 +185,11 @@ const AddBook = () => {
               <div className="mt-2">
                 <input
                   id="rating"
-                  {...register("rating", { required: true, min : {value : 1,}, max : {value : 5}})}
+                  {...register("rating", {
+                    required: true,
+                    min: { value: 1 },
+                    max: { value: 5 },
+                  })}
                   type="number"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
@@ -189,24 +206,22 @@ const AddBook = () => {
               <div className="mt-2">
                 <textarea
                   id="about"
-                  {...register("description" )}
+                  {...register("description")}
                   rows={3}
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   defaultValue={""}
                 />
               </div>
             </div>
-
-           
           </div>
         </div>
-      
+
         <div className="flex justify-center py-12">
           <button className="btn btn-wide btn-primary ">Add Book</button>
         </div>
       </form>
     </div>
-    );
+  );
 };
 
 export default AddBook;
