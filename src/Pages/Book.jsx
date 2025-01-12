@@ -16,9 +16,9 @@ const Book = ({ book }) => {
         <p className="text-left font-semibold">Author : {author}</p>
         <p className="font-semibold text-left">Available Copy : {quantity}</p>
         <div className="flex gap-3">
-          {tags.map((tag) => (
+          {/* {tags.map((tag) => (
             <div className="badge badge-outline">{tag}</div>
-          ))}
+          ))} */}
         </div>
 
         <div className="card-actions justify-end">
