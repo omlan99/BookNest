@@ -14,7 +14,7 @@ const FilteredBooks = () => {
     },[])
     return (
         <div>
-            <h2>Filtered product component {category}</h2>
+            <h2>Filtered product component {category}</h2>  
             <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
             {
                 books.map((book, index) =>  <div className="card card-compact bg-base-100 w-96 shadow-xl">
@@ -30,7 +30,7 @@ const FilteredBooks = () => {
                   <p className="text-left font-semibold">Author : {book.author}</p>
                   <p className="font-semibold text-left">Available Copy : {book.quantity}</p>
                   <div className="flex gap-3">
-                    {book.tags.map((tag) => (
+                    {book.tags?.map((tag) => (
                       <div className="badge badge-outline">{tag}</div>
                     ))}
                   </div>

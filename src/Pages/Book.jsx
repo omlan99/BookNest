@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 const Book = ({ book }) => {
   const { _id, image, bookName, author, tags, rating, quantity } = book;
   return (
@@ -16,15 +14,15 @@ const Book = ({ book }) => {
         <p className="text-left font-semibold">Author : {author}</p>
         <p className="font-semibold text-left">Available Copy : {quantity}</p>
         <div className="flex gap-3">
-          {/* {tags.map((tag) => (
+          {tags?.map((tag) => (
             <div className="badge badge-outline">{tag}</div>
-          ))} */}
+          ))}
         </div>
 
         <div className="card-actions justify-end">
-          <Link to={`/book_details/${_id}`}>
-            <button className="btn btn-primary">Details</button>
-          </Link>
+        
+            <button className="btn btn-primary">Update</button>
+         
         </div>
       </div>
     </div>

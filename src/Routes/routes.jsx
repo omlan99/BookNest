@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import FilteredBooks from "../Components/FilteredBooks";
 import ErrorPage from "../Pages/ErrorPage";
 import AddBook from "../Pages/AddBook";
+import Update from "../Pages/Update";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -39,12 +40,16 @@ const router = createBrowserRouter([
       },
       {
         path : "/book_details/:id",
-        element : <Details></Details>,
+        element : <PrivateRoute><Details></Details></PrivateRoute>,
         loader : ({params}) => fetch(`http://localhost:5000/book_details/${params.id}`)
       },
       {
         path: "/addBooks",
         element :<AddBook></AddBook>
+      },
+      {
+        path : '/update',
+        element : <PrivateRoute><Update></Update></PrivateRoute>
       }
 
     ],

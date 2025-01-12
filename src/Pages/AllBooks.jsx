@@ -21,6 +21,8 @@ const AllBooks = () => {
         .then((res) => res.json())
         .then((data) => setBooks(data));
     }, [location.search]);
+    console.log(books)
+    
     return (
         <div >
             <p> Total Books In The Libaray {books.length}</p>
