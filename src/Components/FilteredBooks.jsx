@@ -1,29 +1,31 @@
 import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-const FilteredBooks = (data) => {
-    console.log(data.categor)
-    useEffect(() =>{
-        fetch("http://localhost:5000/category?category=Fiction",{
+const FilteredBooks = () => {
+    const {category} = useParams()
+    console.log(category)
+    // useEffect(() =>{
+    //     fetch("http://localhost:5000/category?category=Fiction",{
           
-                method : "GET",
-                headers : {
+    //             method : "GET",
+    //             headers : {
                     
-                    "content-type" : 'application/json',
+    //                 "content-type" : 'application/json',
         
-                },
-                // body : JSON.stringify()
+    //             },
+    //             // body : JSON.stringify()
                     
 
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
+    //     })
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         console.log(data)
 
-        })
-    },[])
+    //     })
+    // },[])
     return (
         <div>
-            
+            <h2>Filtered product component {category}</h2>
         </div>
     );
 };

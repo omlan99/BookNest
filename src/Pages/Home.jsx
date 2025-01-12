@@ -6,14 +6,13 @@ import About from "../Components/About";
 import Newsletter from "../Components/Newsletter";
 
 const Home = () => {
-    const data =  useLoaderData()
        
     return (
         <div>
             <h1>Welcome Home</h1>
             <Banner></Banner>
-            <Categories bookData = {data}></Categories>
-            <FilteredBooks bookData = {data}></FilteredBooks>
+            <Categories></Categories>
+            <FilteredBooks></FilteredBooks>
             <About></About>
             <Newsletter></Newsletter>
         </div>
