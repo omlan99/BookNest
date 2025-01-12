@@ -1,17 +1,18 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
-  const navigate = useNavigate();
+
 
   useEffect(() => {
-    fetch("http://localhost:5000")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+    axios.get('http://localhost:5000')
+      .then((res) => {
+        console.log(res.data);
+       const  getData = res.data
         const uniqueCategories = [
-          ...new Set(data.map((book) => book.category)),
+          ...new Set(getData.map((book) => book.category)),
         ];
         setCategories(uniqueCategories);
         console.log(uniqueCategories);
@@ -26,7 +27,6 @@ const Categories = () => {
           <div
             key={index}
             className="card border p-4 cursor-pointer"
-            // onClick={() => navigate(`/category?category=${category}`)}
           >
             <h3 className="text-lg font-bold">{category}</h3>
           </div>
