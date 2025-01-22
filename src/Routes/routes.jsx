@@ -11,6 +11,7 @@ import FilteredBooks from "../Components/FilteredBooks";
 import ErrorPage from "../Pages/ErrorPage";
 import AddBook from "../Pages/AddBook";
 import Update from "../Pages/Update";
+import Borrowedbooks from "../Pages/Borrowedbooks";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -49,7 +50,11 @@ const router = createBrowserRouter([
       {
         path : '/update/:id',
         element : <PrivateRoute><Update></Update></PrivateRoute>
-      }
+      },
+      {
+        path : '/borrowedBooks',
+        element : <Borrowedbooks></Borrowedbooks>
+      },
 
     ],
   },
