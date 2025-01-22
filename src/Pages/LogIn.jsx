@@ -3,6 +3,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 const Login = () => {
   const location = useLocation();
   console.log(location)
@@ -10,41 +12,33 @@ const Login = () => {
   console.log(loader)
   const navigate = useNavigate();
   const emailRef = useRef()
+  const {register, handleSubmit, formState: {errors}} = useForm()
   const handleGoogle = async () => {
    await googleSignIn();
     navigate('/')
   };
-//  useEffect(() => {
-//   if (location.state?.email) {
-//     navigate(location.pathname, { replace: true, state: null });
-//   }
-// }, [location, navigate]);
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(email, password);
-    signInUser(email, password)
-      .then((result) => {
-        console.log(result.user);
-        toast.success("Login Successfull", {
-          position: "top-center",
-        })
-        navigate("/", { replace: true, state: null });
-      })
-      .catch((error) => {
-        // console.log(error.message);
-        toast.error("Email and Password did not mathced", {
-          position: "top-center",
+const onSubmit =(data) =>{
+    console.log(data)
+    signInUser(data.email, data.password)
+    .then(result=> {
+     
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Login Successfully",
+          showConfirmButton: false,
+          timer: 1500
         });
-      });
-  };
-  // const handleForget = () => {
-  //   const email = emailRef.current?.value;
-  //   navigate('/forgetPassword', {state : {email}})
-  // }
+        navigate('/')
+        
+  })
+  .catch(error => {
+    console.log(error.message)
+  })
+  }
+
+
   return (
     <div>
       <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
@@ -56,7 +50,7 @@ const Login = () => {
         </div>
 
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form class="space-y-6" onSubmit={handleLogin}>
+          <form class="space-y-6" onSubmit={handleSubmit(onSubmit)}>
             <div>
               <label
                 for="email"
@@ -68,12 +62,15 @@ const Login = () => {
                 <input
                   ref={emailRef}
                   type="email"
-                  name="email"
+                  {...register("email",{required:true})}
                   id="email"
                   autocomplete="email"
-                  required
+                 
                   class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
+                 {errors.email?.type === "required" && (
+                  <p className="text-red-600">Please Enter a password</p>
+                )}
               </div>
             </div>
 
@@ -98,12 +95,15 @@ const Login = () => {
               <div class="mt-2">
                 <input
                   type="password"
-                  name="password"
+                  {...register("password",{required: true})}
                   id="password"
                   autocomplete="current-password"
-                  required
+                 
                   class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
+                 {errors.password?.type === "required" && (
+                  <p className="text-red-600">Please Enter a password</p>
+                )}
               </div>
             </div>
 
