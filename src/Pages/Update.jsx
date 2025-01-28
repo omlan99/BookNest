@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { IoChevronDownCircleOutline } from "react-icons/io5";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Update = () => {
   const [categories, setCategories] = useState([]);
@@ -31,7 +32,18 @@ const Update = () => {
     // axios.patch(`http://localhost:5000/update/${id}`, data)
     axios
       .patch(`https://book-nest-server-wine.vercel.app/update/${id}`, data)
-      .then((res) => console.log(res.data));
+      .then((res) => {
+        if(res.data.modifiedCount>0){
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your update has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+       
+      });
   };
   return (
     <div>
