@@ -27,7 +27,7 @@ const AddBook = () => {
   };
   return (
     <div className="space-y-12 ">
-      <h1 className="text-5xl text-center py-6 font-bold">Add a new Visa</h1>
+      <h1 className="text-5xl text-center py-6 font-bold">Add a new Book To Library</h1>
       <form className="px-6 " onSubmit={handleSubmit(onSubmit)}>
         <div className="border-b border-gray-900/10 pb-12">
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
