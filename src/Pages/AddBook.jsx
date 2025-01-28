@@ -13,12 +13,13 @@ const AddBook = () => {
   } = useForm();
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post("http://localhost:5000/addBooks", data);
+      // const response = await axios.post("http://localhost:5000/addBooks", data);
+      const response = await axios.post("https://book-nest-server-wine.vercel.app/addBooks", data);
       Swal.fire({
         title: "Book Added Succesfully",
         icon: "success",
     });
-    console.log(data);
+    // console.log(data);
     reset();
     } catch(error) {
         console.log('error found', error)

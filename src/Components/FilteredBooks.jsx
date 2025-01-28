@@ -5,16 +5,18 @@ import { Link, useParams } from 'react-router-dom';
 const FilteredBooks = () => {
     const {category} = useParams()
     const [books, setBooks] = useState([])
-    console.log(category)
+    // console.log(category)
     useEffect(() =>{
-        axios.get(`http://localhost:5000/category?category=${category}`)
+        axios.get(`https://book-nest-server-wine.vercel.app/category?category=${category}`)
+        // axios.get(`http://localhost:5000/category?category=${category}`)
         .then(res => {
             setBooks(res.data)
+            console.log(res.data)
         })
     },[])
     return (
-        <div>
-            <h2>Filtered product component {category}</h2>  
+        <div className=''>
+            <h2> {category}</h2>  
             <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
             {
                 books.map((book, index) =>  <div className="card card-compact bg-base-100 w-96 shadow-xl">

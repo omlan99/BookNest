@@ -7,20 +7,20 @@ const Categories = () => {
 
 
   useEffect(() => {
-    axios.get('http://localhost:5000')
+    axios.get('https://book-nest-server-wine.vercel.app/')
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
        const  getData = res.data
         const uniqueCategories = [
           ...new Set(getData.map((book) => book.category)),
         ];
         setCategories(uniqueCategories);
-        console.log(uniqueCategories);
+        // console.log(uniqueCategories);
       });
   }, []);
 
   return (
-    <div className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-2 gap-4 my-10">
       {categories.map((category, index) => (
         <Link to = {`/category/${category}`} >
          

@@ -1,10 +1,20 @@
-import { useContext, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Details = () => {
   const { user } = useContext(AuthContext);
+  const [details, setDetails] = useState({});
+  const { id } = useParams();
+
+  useEffect(() => {
+    axios.get(`https://book-nest-server-wine.vercel.app/book_details/${id}`)
+      .then((res) => setDetails(res.data))
+      .catch((err) => console.error(err));
+  }, [id]);
+
   const {
     _id,
     image,
@@ -16,85 +26,84 @@ const Details = () => {
     publisher,
     yearOfPublishing,
     quantity,
-  } = useLoaderData();
-  const newData = {
-    _id,
-    image,
-    bookName,
-    author,
-    review,
-    totalPages,
-    category,
-    publisher,
-    yearOfPublishing,
-    quantity,
-    email: user.email,
-    userName: user.displayName,
-  };
+  } = details;
 
-  const handleQuantity = (e, id) => {
+  const handleQuantity = async (e) => {
     e.preventDefault();
     const form = e.target;
+
+    const name = form.name.value;
+    const email = form.email.value;
     const date = new Date(form.date.value);
     const currentDate = new Date();
 
-    console.log("Current Date:", currentDate);
-    console.log("Input Date:", date);
-    console.log(id);
     if (date > currentDate) {
-      if (quantity > 0 && date > currentDate) {
-        fetch(`http://localhost:5000/book_details/${_id}`, {
-          method: "PATCH",
-          headers: {
-            "content-type": "application/json",
-          },
-          // body : JSON.stringify()
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            console.log(data.modifiedCount);
-            if (data.modifiedCount > 0) {
-              alert("book has been added to you account");
+      if (quantity > 0) {
+        try {
+          // Update book quantity
+          const updateResponse = await axios.patch(
+            `https://book-nest-server-wine.vercel.app/book_details/${_id}`,
+            {}
+          );
+
+          if (updateResponse.data.modifiedCount > 0) {
+            // Add borrowed book entry
+            const newData = {
+              _id,
+              image,
+              bookName,
+              author,
+              review,
+              totalPages,
+              category,
+              publisher,
+              yearOfPublishing,
+              quantity: quantity - 1,
+              email,
+              userName: name,
+              returnDate: new Date().toISOString().split("T")[0],
+            };
+
+            const borrowResponse = await axios.post(
+              "https://book-nest-server-wine.vercel.app/borrow_books",
+              newData
+            );
+
+            if (borrowResponse.data) {
+              alert("Book has been added to your account!");
+              form.reset(); // Reset form
+              document.getElementById("my_modal_4").close(); // Close modal
             }
-          });
+          } else {
+            toast.error("Failed to borrow the book. Please try again.", {position : "top-center"});
+          }
+        } catch (error) {
+          console.error(error);
+          toast.error("Something went wrong. Please try again later.", {position : "top-center"});
+        }
       } else {
-        alert("the book will be avialable soon");
+        toast.error("The book is currently unavailable.", {position : "top-center"});
       }
     } else {
-      alert("enter a valid date");
+      toast.error("Please enter a valid return date.", {position : "top-center"});
     }
   };
-  const handleClick = () => {
-    axios.get('http://localhost:5000/borrow_books', newData)
-    .then(res => console.log(res.data))
-  //   fetch(`http://localhost:5000/borrow_books`, {
-  //     method: "POST",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(newData),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => console.log(data));
-  };
+
   return (
     <div>
       <div className="flex flex-col lg:flex-row gap-10 py-8 px-4">
         <div className="h-[500px] w-[380px] overflow-hidden m-5">
-          <img src={image} className="max-w-sm rounded-lg shadow-2xl" />
+          <img src={image} className="max-w-sm rounded-lg shadow-2xl" alt="Book Cover" />
         </div>
-        <div className="text-left my-5 text-wrap  w-1/2 px-4">
+        <div className="text-left my-5 text-wrap w-1/2 px-4">
           <h1 className="text-5xl font-bold mb-4">{bookName}</h1>
-          <p className="py-1 font-semibold">Overview :</p>
+          <p className="py-1 font-semibold">Overview:</p>
           <p>{review}</p>
-          <p className="py-1 font-semibold">Author : {author}</p>
-          <p className="py-1 font-semibold">Published By : {publisher}</p>
-          <p className="py-1 font-semibold">
-            Year of Publish : {yearOfPublishing}
-          </p>
-          <p className="py-1 font-semibold">Category : {category}</p>
-          <p className="py-1 font-semibold">Available Copy : {quantity}</p>
+          <p className="py-1 font-semibold">Author: {author}</p>
+          <p className="py-1 font-semibold">Published By: {publisher}</p>
+          <p className="py-1 font-semibold">Year of Publish: {yearOfPublishing}</p>
+          <p className="py-1 font-semibold">Category: {category}</p>
+          <p className="py-1 font-semibold">Available Copies: {quantity}</p>
 
           <button
             className="btn btn-primary btn-wide py-2 mt-5"
@@ -104,10 +113,11 @@ const Details = () => {
           </button>
         </div>
       </div>
-      {/* You can open the modal using document.getElementById('ID').showModal() method */}
+
+      {/* Borrow Modal */}
       <dialog id="my_modal_4" className="modal">
         <div className="modal-box w-11/12 max-w-5xl">
-          <h3 className="font-bold text-lg">Borrow form</h3>
+          <h3 className="font-bold text-lg">Borrow Form</h3>
 
           <div className="px-9">
             <button
@@ -116,7 +126,7 @@ const Details = () => {
             >
               ✕
             </button>
-            <form onSubmit={(e) => handleQuantity(e, _id)} className=" ">
+            <form onSubmit={handleQuantity}>
               <div className="grid items-center">
                 <div>
                   <label className="label">
@@ -139,18 +149,17 @@ const Details = () => {
                     defaultValue={user?.email}
                     type="email"
                     name="email"
-                    placeholder="email"
+                    placeholder="Email"
                     className="input input-bordered w-full"
                     required
                   />
                 </div>
                 <div>
                   <label className="label">
-                    <span className="label-text">Retrun Date</span>
+                    <span className="label-text">Return Date</span>
                   </label>
                   <input
                     type="date"
-                    placeholder=""
                     name="date"
                     className="input input-bordered w-full"
                     required
@@ -158,11 +167,9 @@ const Details = () => {
                 </div>
               </div>
 
-              {/* if there is a button, it will close the modal */}
               <button type="submit" className="mt-5 btn">
                 Borrow
               </button>
-              <button onClick={handleClick}> Send Data</button>
             </form>
           </div>
         </div>

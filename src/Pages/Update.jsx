@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { IoChevronDownCircleOutline } from "react-icons/io5";
 import { useParams } from "react-router-dom";
-import { register } from "swiper/element";
 
 const Update = () => {
     const [categories, setCategories] = useState([]);
@@ -11,22 +10,24 @@ const Update = () => {
 
 
   useEffect(() => {
-    axios.get('http://localhost:5000')
+    // axios.get('http://localhost:5000')
+    axios.get('https://book-nest-server-wine.vercel.app/')
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
        const  getData = res.data
         const uniqueCategories = [
           ...new Set(getData.map((book) => book.category)),
         ];
         setCategories(uniqueCategories);
-        console.log(uniqueCategories);
+        // console.log(uniqueCategories);
       });
   }, []);
 
   const {register, handleSubmit, formState: { errors }} = useForm()
   const onSubmit = (data) =>{
     console.log(data)
-    axios.patch(`http://localhost:5000/update/${id}`, data)
+    // axios.patch(`http://localhost:5000/update/${id}`, data)
+    axios.patch(`https://book-nest-server-wine.vercel.app/update/${id}`, data)
     .then(res => console.log(res.data))
   } 
   return (
@@ -139,33 +140,7 @@ const Update = () => {
                   />
                 </div>
               </div> */}
-{/* _id
-676ad041e0fc1c01b1a8d860
-bookId
-2
-bookName
-"To Kill a Mockingbird"
-author
-"Harper Lee"
-image
-"https://i.ibb.co.com/0cv102J/To-Kill-a-Mockingbird.webp"
-review
-"'The Great Gatsby' by F. Scott Fitzgerald is a timeless masterpiece th…"
-totalPages
-281
-rating
-4.8
-category
-"Fiction"
 
-tags
-Array (2)
-publisher
-"J.B. Lippincott & Co."
-quantity
-30
-yearOfPublishing
-1960 */}
 
               <div className="sm:col-span-2 sm:col-start-1">
                 <label

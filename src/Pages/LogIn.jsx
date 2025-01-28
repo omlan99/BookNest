@@ -9,7 +9,7 @@ const Login = () => {
   const location = useLocation();
   console.log(location)
   const { signInUser, googleSignIn, loader} = useContext(AuthContext);
-  console.log(loader)
+  // console.log(loader)
   const navigate = useNavigate();
   const emailRef = useRef()
   const {register, handleSubmit, formState: {errors}} = useForm()
@@ -19,7 +19,7 @@ const Login = () => {
   };
 
 const onSubmit =(data) =>{
-    console.log(data)
+    // console.log(data)
     signInUser(data.email, data.password)
     .then(result=> {
      

@@ -14,14 +14,16 @@ const AllBooks = () => {
   
       // Fetch books based on category or fetch all books
       const url = category
-        ? `http://localhost:5000/category?category=${category}`
-        : `http://localhost:5000/`;
+        // ? `http://localhost:5000/category?category=${category}`
+        // : `http://localhost:5000/`;
+        ? `https://book-nest-server-wine.vercel.app/category?category=${category}`
+        : `https://book-nest-server-wine.vercel.app/`;
       
       fetch(url)
         .then((res) => res.json())
         .then((data) => setBooks(data));
     }, [location.search]);
-    console.log(books)
+    // console.log(books)
     
     return (
         <div >
