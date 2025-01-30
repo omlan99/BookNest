@@ -30,6 +30,9 @@ const SignUp = () => {
         });
         navigate('/')
     })
+    .catch(error =>{
+      toast.error(error.message)
+    })
   })
   }
   const handleGoogle = () => {

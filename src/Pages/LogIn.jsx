@@ -34,7 +34,7 @@ const onSubmit =(data) =>{
         
   })
   .catch(error => {
-    console.log(error.message)
+    toast.error(error.message)
   })
   }
 

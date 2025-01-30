@@ -10,7 +10,8 @@ const Details = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`https://book-nest-server-wine.vercel.app/book_details/${id}`)
+    axios
+      .get(`https://book-nest-server-wine.vercel.app/book_details/${id}`)
       .then((res) => setDetails(res.data))
       .catch((err) => console.error(err));
   }, [id]);
@@ -70,22 +71,32 @@ const Details = () => {
             );
 
             if (borrowResponse.data) {
-              alert("Book has been added to your account!");
+              toast.success("Book has been added to your account!", {
+                position: "top-center",
+              });
               form.reset(); // Reset form
               document.getElementById("my_modal_4").close(); // Close modal
             }
           } else {
-            toast.error("Failed to borrow the book. Please try again.", {position : "top-center"});
+            toast.error("Failed to borrow the book. Please try again.", {
+              position: "top-center",
+            });
           }
         } catch (error) {
           console.error(error);
-          toast.error("Something went wrong. Please try again later.", {position : "top-center"});
+          toast.error("Something went wrong. Please try again later.", {
+            position: "top-center",
+          });
         }
       } else {
-        toast.error("The book is currently unavailable.", {position : "top-center"});
+        toast.error("The book is currently unavailable.", {
+          position: "top-center",
+        });
       }
     } else {
-      toast.error("Please enter a valid return date.", {position : "top-center"});
+      toast.error("Please enter a valid return date.", {
+        position: "top-center",
+      });
     }
   };
 
@@ -93,7 +104,11 @@ const Details = () => {
     <div>
       <div className="flex flex-col lg:flex-row gap-10 py-8 px-4">
         <div className="h-[500px] w-[380px] overflow-hidden m-5">
-          <img src={image} className="max-w-sm rounded-lg shadow-2xl" alt="Book Cover" />
+          <img
+            src={image}
+            className="max-w-sm rounded-lg shadow-2xl"
+            alt="Book Cover"
+          />
         </div>
         <div className="text-left my-5 text-wrap w-1/2 px-4">
           <h1 className="text-5xl font-bold mb-4">{bookName}</h1>
@@ -101,7 +116,9 @@ const Details = () => {
           <p>{review}</p>
           <p className="py-1 font-semibold">Author: {author}</p>
           <p className="py-1 font-semibold">Published By: {publisher}</p>
-          <p className="py-1 font-semibold">Year of Publish: {yearOfPublishing}</p>
+          <p className="py-1 font-semibold">
+            Year of Publish: {yearOfPublishing}
+          </p>
           <p className="py-1 font-semibold">Category: {category}</p>
           <p className="py-1 font-semibold">Available Copies: {quantity}</p>
 
