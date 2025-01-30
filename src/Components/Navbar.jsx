@@ -9,7 +9,7 @@ const Navbar = () => {
       <li>
         <Link to={"/"}>Home</Link>
       </li>
-      {user && (
+  
         <>
           <li>
             <Link to={"/allBooks"}>All Books</Link>
@@ -21,7 +21,7 @@ const Navbar = () => {
             <Link to={'/borrowedBooks'}>Borrowed Books</Link>
           </li>
         </>
-      )}
+    
     </>
   );
   return (

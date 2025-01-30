@@ -6,7 +6,7 @@ This project involves developing a **Library Management System** for a school. T
 ---
 
 ## Live Site  
-- **Live Site Link**: [Your Deployed Website URL Here]  
+- **Live Site Link**: 
 
 ---
 

@@ -7,18 +7,16 @@ const FilteredBooks = () => {
     const [books, setBooks] = useState([])
     // console.log(category)
     useEffect(() =>{
-        if(books.length > 0){
-          axios.get(`https://book-nest-server-wine.vercel.app/category?category=${category}`)
+        axios.get(`https://book-nest-server-wine.vercel.app/category?category=${category}`)
         // axios.get(`http://localhost:5000/category?category=${category}`)
         .then(res => {
             setBooks(res.data)
             console.log(res.data)
         })
-        }
-    },[category])
+    },[])
     return (
         <div className=''>
-            <h2> {category}</h2>  
+            <h2 className='text-2xl font-bold'> {category}</h2>  
             <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
             {
                 books.map((book, index) =>  <div className="card card-compact bg-base-100 w-96 shadow-xl">
