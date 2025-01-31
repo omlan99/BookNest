@@ -13,8 +13,19 @@ const AddBook = () => {
   } = useForm();
   const onSubmit = async (data) => {
     try {
+      console.log(data)
+      const formattedData = {
+        ...data,
+        quantity: Number(data.quantity),
+        yearOfPublishing: Number(data.yearOfPublishing),
+        totalPages: Number(data.totalPages),
+        rating: parseFloat(data.rating), // Use parseFloat for ratings if decimals are allowed
+      };
+  
+      console.log(formattedData); 
+      const quantity = parseInt(data.quantity)
       // const response = await axios.post("http://localhost:5000/addBooks", data);
-      const response = await axios.post("https://book-nest-server-wine.vercel.app/addBooks", data);
+      const response = await axios.post("https://book-nest-server-wine.vercel.app/addBooks", formattedData);
       Swal.fire({
         title: "Book Added Succesfully",
         icon: "success",
@@ -113,11 +124,11 @@ const AddBook = () => {
               </label>
               <div className="mt-2">
                 <input
+                  type="number"
                   id="quantity"
                   {...register("quantity", {
                     required: "quantity is required",
                   })}
-                  type="number"
                   autoComplete="address-level2"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />

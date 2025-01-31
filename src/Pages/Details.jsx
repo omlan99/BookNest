@@ -12,9 +12,12 @@ const Details = () => {
   useEffect(() => {
     axios
       .get(`https://book-nest-server-wine.vercel.app/book_details/${id}`)
-      .then((res) => setDetails(res.data))
+      .then((res) => {
+        setDetails(res.data);
+      })
       .catch((err) => console.error(err));
-  }, [id]);
+  }, [id,axios]);
+  console.log(details);
 
   const {
     _id,
@@ -39,15 +42,18 @@ const Details = () => {
     const currentDate = new Date();
 
     if (date > currentDate) {
+   
+      
       if (quantity > 0) {
         try {
           // Update book quantity
+          console.log("button clicked");
           const updateResponse = await axios.patch(
+            // `http://localhost:5000/book_details/${id}`,
             `https://book-nest-server-wine.vercel.app/book_details/${_id}`,
-            {}
           );
 
-          if (updateResponse.data.modifiedCount > 0) {
+          if (updateResponse.data && updateResponse.data.modifiedCount) {
             // Add borrowed book entry
             const newData = {
               _id,
@@ -82,18 +88,21 @@ const Details = () => {
               position: "top-center",
             });
           }
-        } catch (error) {
+        } 
+        catch (error) {
           console.error(error);
           toast.error("Something went wrong. Please try again later.", {
             position: "top-center",
           });
         }
-      } else {
+      }
+       else {
         toast.error("The book is currently unavailable.", {
           position: "top-center",
         });
       }
-    } else {
+    } 
+    else {
       toast.error("Please enter a valid return date.", {
         position: "top-center",
       });
