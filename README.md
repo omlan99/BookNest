@@ -1,61 +1,85 @@
-# Library Management System  
-
-## Project Description  
-This project involves developing a **Library Management System** for a school. The system allows for efficient management of library operations such as adding, categorizing, and updating books, tracking borrowed and returned books, and providing a user-friendly interface for users.  
-
----
-
-## Live Site  
-- **Live Site Link**: [BookNest](https://booknest-5f5dc.web.app/)
-
----
-
-## Key Features  
-### General Features:  
-- **Responsive Design**: Works seamlessly across mobile, tablet, and desktop.  
-- **Dynamic Title**: The website title changes based on the active route.  
-- **Authentication System**:  
-  - Email/password-based registration and login.  
-  - Social login (Google/GitHub).  
-  - JWT-based authentication for protected routes.  
-
-### Pages:  
-1. **Home Page**:  
-   - **Banner/Slider**: Interactive slider with at least 3 slides.  
-   - **Book Categories**: Four categories with cards showing the category name and related books.  
-   - **Extra Sections**: Two additional sections for value-added content.  
-
-2. **All Books Page** (Private Route):  
-   - Displays all books in a card .  
-   - Includes a filter to show only available books.  
-   - Update button for editing book details.  
-
-3. **Add Book Page** (Private Route):  
-   - Form for adding a new book to the database.  
-   - Input fields: Name, Image, Author Name, Category, Description, Quantity, and Rating.  
-
-4. **Book Details Page** (Private Route):  
-   - Shows detailed information about a book.  
-   - Borrow button to borrow the book (with modal and return date form).  
-
-5. **Borrowed Books Page** (Private Route):  
-   - Displays books borrowed by the logged-in user.  
-   - Allows returning books and updates the quantity in the database.  
-
-6. **404 Page**: Custom-designed page for invalid routes.  
+# 📚 BookNest: Library Management System  
 
 
+## 🚀 Project Overview  
+BookNest is a **Library Management System** designed for schools, allowing efficient management of library operations. It enables users to **add, categorize, and update books, track borrowed and returned books**, and provides a user-friendly interface for both librarians and students.  
 
----
+🔗 **Live Project Link:** [BookNest](https://booknest-5f5dc.web.app/)  
 
-## Tools & Technologies  
-- **Frontend**: React, React Router, React Hook Form, Axios, Tailwind CSS, Framer Motion, Swiper JS.  
-- **Backend**: Node.js, Express.js, JWT Authentication, MongoDB, dotenv.  
-- **Authentication**: Firebase (email/password and social login).  
-- **Deployment**: Netlify/Surge (Frontend), Vercel/Render (Backend).  
+## 🛠️ Technologies Used  
+### **Frontend**  
+- React.js, React Router  
+- React Hook Form for form handling  
+- Axios for API communication  
+- Tailwind CSS & DaisyUI for styling  
+- Swiper JS for interactive sliders  
+- Framer Motion for animations  
 
----
+### **Backend**  
+- Node.js, Express.js  
+- MongoDB for database management  
+- JWT Authentication for secure routes  
+- dotenv for environment variable management  
 
+### **Authentication**  
+- Firebase Authentication (Email/Password & Social Login)  
 
+### **Deployment**  
+- **Frontend:** Netlify/Surge  
+- **Backend:** Vercel/Render  
 
+## ✨ Core Features  
+✅ **Responsive Design** – Works seamlessly across mobile, tablet, and desktop.  
+✅ **Dynamic Titles** – Website title changes based on the active route.  
+✅ **Authentication System** –  
+   - Email/password-based registration & login  
+   - Social login (Google/GitHub)  
+   - JWT-based authentication for protected routes  
+✅ **Home Page Features** –  
+   - Interactive **Banner/Slider** with at least 3 slides  
+   - **Book Categories** – Displays four categories with book listings  
+   - **Extra Sections** – Value-added content sections  
+✅ **All Books Page (Private Route)** –  
+   - Displays all books in a card layout  
+   - Filter to show only available books  
+   - Update button for editing book details  
+✅ **Add Book Page (Private Route)** –  
+   - Form to add new books to the database  
+   - Fields: Name, Image, Author, Category, Description, Quantity, Rating  
+✅ **Book Details Page (Private Route)** –  
+   - Shows book information  
+   - **Borrow Button** – Allows borrowing with a return date selection  
+✅ **Borrowed Books Page (Private Route)** –  
+   - Displays books borrowed by the logged-in user  
+   - Allows returning books, updating the database quantity  
+✅ **404 Page** – Custom-designed page for invalid routes  
 
+## 📦 Dependencies  
+### **Main Dependencies**  
+- `axios` – For API requests  
+- `firebase` – Authentication & database  
+- `localforage` – Local storage management  
+- `lottie-react` – For animations  
+- `match-sorter` – Sorting and filtering data  
+- `react`, `react-dom` – Core React libraries  
+- `react-hook-form` – Form validation & handling  
+- `react-icons` – Icons for UI  
+- `react-router-dom` – Routing management  
+- `react-toastify` – User notifications  
+- `sort-by` – Sorting functionality  
+- `sweetalert2` – Beautiful alert pop-ups  
+- `swiper` – Swiper.js for touch-based sliders  
+
+### **Development Dependencies**  
+- `@eslint/js`, `eslint`, `eslint-plugin-react`, `eslint-plugin-react-hooks`, `eslint-plugin-react-refresh` – Linting tools  
+- `@types/react`, `@types/react-dom` – TypeScript support  
+- `@vitejs/plugin-react` – Vite support for React  
+- `autoprefixer`, `postcss`, `tailwindcss`, `daisyui` – Styling utilities  
+- `vite` – Development & build tool  
+
+## 🛠️ How to Run the Project Locally  
+Follow these steps to set up and run **BookNest** on your local machine:  
+- `Install Dependencies` - npm install
+- `Start the Development Server` - npm run dev
+- `Build for Production` - npm run build
+-  `Preview the Build`  - npm run preview
