@@ -1,12 +1,13 @@
 import Lottie from "lottie-react";
 import React from "react";
 import Animationdata from "../assets/Animation - 1736348051255.json"
+import { Link } from "react-router-dom";
 
 const About = () => {
   return (
     <div>
-      <div className="grid lg:grid-cols-2 text-left p-12">
-        <div className="space-y-3 my-auto">
+      <div className="grid lg:grid-cols-2 text-left gap-10 px-5 mb-20">
+        <div className="space-y-3 my-auto order-last lg:order-first">
           <h3 className="font-medium text-3xl">For the Love of Reading</h3>
           <div>
             <h6 className="font-semibold py-2">Selection</h6>
@@ -16,7 +17,7 @@ const About = () => {
             </p>
           </div>
           <div>
-            <h6 className="font-semibold py-2">Purchasing Power</h6>
+            <h6 className="font-semibold py-2">Borrowing Power</h6>
             <p>
               Used books are often treasures that are out-of-print or rare. With
               Wish Lists you can choose to be notified the instant we find a
@@ -34,10 +35,10 @@ const About = () => {
             </p>
           </div>
           <div className="py-4">
-            <button className="btn bg-[#018574] text-white font-bold">More About Us</button>
+            <Link to="/allBooks" className="btn bg-[#018574] text-white font-bold">See All Books</Link>
             </div>
         </div>
-        <div >
+        <div classname="">
             <Lottie animationData={Animationdata}></Lottie>
         </div>
       </div>

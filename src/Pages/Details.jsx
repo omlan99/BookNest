@@ -106,11 +106,11 @@ const Details = () => {
 
   return (
     <div>
-      <div className="grid lg:grid-cols-4 items-center justify-center gap-10 my-20">
-        <div className="p-5 md:flex md:justify-center">
+      <div className="grid lg:grid-cols-4 items-center justify-center gap-4 my-20  px-4">
+        <div className="p-0 md:flex md:justify-center items-center ">
           <img
             src={image}
-            className="max-w-sm rounded-lg shadow-2xl h-full w-full object-contain"
+            className="max-w-sm rounded-lg  h-full w-full object-contain"
             alt={`${bookName} cover photo`}
           />
         </div>
@@ -119,15 +119,15 @@ const Details = () => {
 
           <p className="py-5">{review}</p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-            <div className="p-2 border ">
+            <div className="p-2 border rounded-lg">
               <p className="font-semibold py-1">Author </p>
               <p>{author}</p>
             </div>
-            <div className="p-2 border ">
+            <div className="p-2 border rounded-lg">
               <p className="py-1 font-semibold">Published By </p>
               <p>{publisher}</p>
             </div>
-            <div className="p-2 border ">
+            <div className="p-2 border rounded-lg">
               <p className="py-1 font-semibold">
                 Year of Publish
               </p>
@@ -135,29 +135,31 @@ const Details = () => {
                {yearOfPublishing}
               </p>
             </div>
-            <div className="p-2 border ">
+            <div className="p-2 border rounded-lg">
               <p className="py-1 font-semibold">Category</p>
               <p className="">{category}</p>
             </div>
-            <div className="p-2 border ">
+            <div className="p-2 border rounded-lg">
               <p className="py-1 font-semibold">Available Copies</p>
               <p className="  ">{quantity}</p>
             </div>
           </div>
 
+          <div className="flex w-full  justify-center">
           <button
             className="btn btn-primary btn-wide py-2 mt-5"
             onClick={() => document.getElementById("my_modal_4").showModal()}
           >
             Borrow
-          </button>
+          </button> 
+          </div>
         </div>
       </div>
 
       {/* Borrow Modal */}
       <dialog id="my_modal_4" className="modal">
         <div className="modal-box w-11/12 max-w-5xl">
-          <h3 className="font-bold text-lg">Borrow Form</h3>
+          <h3 className="font-bold text-lg text-center">Borrow Form</h3>
 
           <div className="px-9">
             <button
@@ -206,10 +208,12 @@ const Details = () => {
                   />
                 </div>
               </div>
-
-              <button type="submit" className="mt-5 btn">
+              <div className="flex justify-center">
+                
+              <button type="submit" className="mt-5 btn btn-primary btn-wide">
                 Borrow
               </button>
+              </div>
             </form>
           </div>
         </div>

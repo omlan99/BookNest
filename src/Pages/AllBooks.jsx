@@ -29,8 +29,8 @@ const AllBooks = () => {
     return (
         <div >
             {
-                books? <> <p> Total Books In The Libaray {books.length}</p>
-                <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
+                books? <> 
+                <div className="grid lg:grid-cols-4 md:grid-cols-3 gap-6 px-5">
                 {
                     books.map((book, index) =><Book key={index} book ={book}></Book>)
                 }

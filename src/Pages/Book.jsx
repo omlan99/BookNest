@@ -1,35 +1,47 @@
 import { Link } from "react-router-dom";
 
 const Book = ({ book }) => {
-  const { _id, image, bookName, author, tags, rating, quantity } = book;
+  console.log(book);
+  const {
+    _id,
+    image,
+    bookName,
+    category,
+    publisher,
+    author,
+    tags,
+    rating,
+    quantity,
+  } = book;
   return (
-    <div className="card card-compact bg-base-100 w-96 shadow-xl">
-      <figure className="overflow-hidden h-[250px] w-[250px]">
+    <div className="card card-compact bg-base-100 border shadow-md ">
+      <figure className="overflow-hidden h-[200px] p-5 ">
         <img
           src={image}
           alt={bookName}
-          className="object-cover object-center"
+          className="max-w-sm rounded-lg  h-full w-full object-contain"
         />
       </figure>
-      <div className="card-body flex-grow">
-        <h2 className="card-title">{bookName}!</h2>
-        <p className="text-left font-semibold">Author : {author}</p>
-        <p className="font-semibold text-left">Available Copy : {quantity}</p>
-        <div className="flex gap-3">
+      <div className="card-body h-{300px} gap-0 flex-grow">
+        <h2 className="card-title gap-0 text-lg font-medium">{bookName}</h2>
+        <p className="text-left font-semibold"> by {author}</p>
+        {/* <p className="font-semibold text-left"> Published by {publisher}</p> */}
+        <div className="flex gap-3 pt-2">
           {tags?.map((tag) => (
             <div className="badge badge-outline">{tag}</div>
           ))}
         </div>
 
         <div className="card-actions justify-end">
-            <Link to={`/update/${_id}`}>
-            <button className="btn btn-primary">Update</button>
-            </Link>
-         
+          <Link to={`/update/${_id}`}>
+            <button className="btn btn-primary mt-2">
+              Update
+            </button>
+          </Link>
         </div>
       </div>
     </div>
   );
 };
- 
+
 export default Book;
