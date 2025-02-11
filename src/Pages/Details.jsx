@@ -11,13 +11,14 @@ const Details = () => {
 
   useEffect(() => {
     axios
-      .get(`https://book-nest-server-wine.vercel.app/book_details/${id}`)
+      .get(`http://localhost:5000/book_details/${id}`)
+      // .get(`https://book-nest-server-wine.vercel.app/book_details/${id}`)
       .then((res) => {
         setDetails(res.data);
       })
       .catch((err) => console.error(err));
-  }, [id, axios]);
-  console.log(details);
+  }, [id]);
+  
 
   const {
     _id,
@@ -29,7 +30,7 @@ const Details = () => {
     category,
     publisher,
     yearOfPublishing,
-    quantity,
+    quantity, 
   } = details;
 
   const handleQuantity = async (e) => {
@@ -38,53 +39,69 @@ const Details = () => {
 
     const name = form.name.value;
     const email = form.email.value;
-    const date = new Date(form.date.value);
-    const currentDate = new Date();
+    const returnDate = new Date(form.date.value).toISOString().split("T")[0];
+    const borrowDate = new Date().toISOString().split("T")[0];
 
-    if (date > currentDate) {
-      if (quantity > 0) {
+    if (returnDate <= borrowDate) {
+      toast.error("Please enter a valid return date.", {
+        position: "top-center",
+      });
+      return;
+    }
+    if (quantity <= 0) {
+      toast.error("The book is currently unavailable.", {
+        position: "top-center",
+      });
+      return;
+    }
+  
+    
         try {
-          // Update book quantity
-          console.log("button clicked");
-          const updateResponse = await axios.patch(
-            // `http://localhost:5000/book_details/${id}`,
-            `https://book-nest-server-wine.vercel.app/book_details/${_id}`
+          // Add borrowed book entry
+          const newData = {
+            bookId: _id,
+            image,
+            bookName,
+            author,
+            review,
+            totalPages,
+            category,
+            publisher,
+            yearOfPublishing,
+            quantity,
+            email,
+            userName: name,
+            borrowDate,
+            returnDate,
+          };
+
+          const borrowResponse = await axios.post(
+            `http://localhost:5000/borrow_books`,
+            // "https://book-nest-server-wine.vercel.app/borrow_books",
+            newData
           );
-
-          if (updateResponse.data && updateResponse.data.modifiedCount) {
-            // Add borrowed book entry
-            const newData = {
-              _id,
-              image,
-              bookName,
-              author,
-              review,
-              totalPages,
-              category,
-              publisher,
-              yearOfPublishing,
-              quantity: quantity - 1,
-              email,
-              userName: name,
-              returnDate: new Date().toISOString().split("T")[0],
-            };
-
-            const borrowResponse = await axios.post(
-              "https://book-nest-server-wine.vercel.app/borrow_books",
-              newData
-            );
-
-            if (borrowResponse.data) {
-              toast.success("Book has been added to your account!", {
-                position: "top-center",
-              });
-              form.reset(); // Reset form
-              document.getElementById("my_modal_4").close(); // Close modal
-            }
-          } else {
-            toast.error("Failed to borrow the book. Please try again.", {
+          if (borrowResponse.data.message) {
+            toast.error(borrowResponse.data.message, { position: "top-center" });
+            document.getElementById("my_modal_4").close();
+            return;
+          }
+          if (borrowResponse.data.insertedId) {
+            toast.success("You borrowed the book successfully!", {
               position: "top-center",
             });
+            // Update book quantity
+
+            const updateResponse = await axios.patch(
+              `http://localhost:5000/book_details/${id}`
+            );
+            if (updateResponse.data.modifiedCount) {
+              setDetails((prev) => ({
+                ...prev,
+                quantity: prev.quantity - 1,
+              }));
+            }
+            form.reset(); // Reset form
+            document.getElementById("my_modal_4").close(); // Close modal
           }
         } catch (error) {
           console.error(error);
@@ -92,16 +109,8 @@ const Details = () => {
             position: "top-center",
           });
         }
-      } else {
-        toast.error("The book is currently unavailable.", {
-          position: "top-center",
-        });
-      }
-    } else {
-      toast.error("Please enter a valid return date.", {
-        position: "top-center",
-      });
-    }
+   
+   
   };
 
   return (
@@ -128,12 +137,8 @@ const Details = () => {
               <p>{publisher}</p>
             </div>
             <div className="p-2 border rounded-lg">
-              <p className="py-1 font-semibold">
-                Year of Publish
-              </p>
-              <p >
-               {yearOfPublishing}
-              </p>
+              <p className="py-1 font-semibold">Year of Publish</p>
+              <p>{yearOfPublishing}</p>
             </div>
             <div className="p-2 border rounded-lg">
               <p className="py-1 font-semibold">Category</p>
@@ -146,12 +151,12 @@ const Details = () => {
           </div>
 
           <div className="flex w-full  justify-center">
-          <button
-            className="btn btn-primary btn-wide py-2 mt-5"
-            onClick={() => document.getElementById("my_modal_4").showModal()}
-          >
-            Borrow
-          </button> 
+            <button
+              className="btn btn-primary btn-wide py-2 mt-5"
+              onClick={() => document.getElementById("my_modal_4").showModal()}
+            >
+              Borrow
+            </button>
           </div>
         </div>
       </div>
@@ -209,10 +214,9 @@ const Details = () => {
                 </div>
               </div>
               <div className="flex justify-center">
-                
-              <button type="submit" className="mt-5 btn btn-primary btn-wide">
-                Borrow
-              </button>
+                <button type="submit" className="mt-5 btn btn-primary btn-wide">
+                  Borrow
+                </button>
               </div>
             </form>
           </div>

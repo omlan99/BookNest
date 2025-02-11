@@ -31,18 +31,16 @@ const FilteredBooks = () => {
               />
             </figure>
             <div className="card-body flex-grow">
-              <h2 className="card-title">{book.bookName}!</h2>
-              <p className="text-left font-semibold">Author : {book.author}</p>
-              <p className="font-semibold text-left">
-                Available Copy : {book.quantity}
-              </p>
-              <div className="flex gap-3">
+              <h2 className="card-title text-lg">{book.bookName}!</h2>
+              <p className="text-left font-semibold">by {book.author}</p>
+             
+              <div className="flex gap-3">  
                 {book.tags?.map((tag) => (
                   <div className="badge badge-outline">{tag}</div>
                 ))}
               </div>
 
-              <div className="card-actions justify-end">
+              <div className="card-actions justify-end mt-2">
                 <Link to={`/book_details/${book._id}`}>
                   <button className="btn btn-primary">Details</button>
                 </Link>

@@ -20,7 +20,7 @@ const Categories = () => {
   return (
     <div className="pt-20" id="category">
       <h2 className="text-2xl font-bold text-center pb-5">Categories</h2>
-      <div className="grid grid-cols-2 gap-4 mb-20 px-5 ">
+      <div className="grid md:grid-cols-3- lg:grid-cols-4 gap-4 mb-20 px-5 ">
         {categories.map((category, index) => (
           <Link to={`/category/${category}`}>
             <div key={index} className="card border p-4 cursor-pointer">
