@@ -5,7 +5,7 @@ import Navbar from "../Components/Navbar";
 
 const Layout = () => {
     return (
-        <div className="bg-orange-200">
+        <div className="">
             <Navbar></Navbar>
             <div className="min-h-svh container mx-auto">
             <Outlet></Outlet>

@@ -16,7 +16,7 @@ const Details = () => {
         setDetails(res.data);
       })
       .catch((err) => console.error(err));
-  }, [id,axios]);
+  }, [id, axios]);
   console.log(details);
 
   const {
@@ -42,15 +42,13 @@ const Details = () => {
     const currentDate = new Date();
 
     if (date > currentDate) {
-   
-      
       if (quantity > 0) {
         try {
           // Update book quantity
           console.log("button clicked");
           const updateResponse = await axios.patch(
             // `http://localhost:5000/book_details/${id}`,
-            `https://book-nest-server-wine.vercel.app/book_details/${_id}`,
+            `https://book-nest-server-wine.vercel.app/book_details/${_id}`
           );
 
           if (updateResponse.data && updateResponse.data.modifiedCount) {
@@ -88,21 +86,18 @@ const Details = () => {
               position: "top-center",
             });
           }
-        } 
-        catch (error) {
+        } catch (error) {
           console.error(error);
           toast.error("Something went wrong. Please try again later.", {
             position: "top-center",
           });
         }
-      }
-       else {
+      } else {
         toast.error("The book is currently unavailable.", {
           position: "top-center",
         });
       }
-    } 
-    else {
+    } else {
       toast.error("Please enter a valid return date.", {
         position: "top-center",
       });
@@ -111,25 +106,44 @@ const Details = () => {
 
   return (
     <div>
-      <div className="flex flex-col lg:flex-row gap-10 py-8 px-4">
-        <div className="h-[500px] w-[380px] overflow-hidden m-5">
+      <div className="grid lg:grid-cols-4 items-center justify-center gap-10 my-20">
+        <div className="p-5 md:flex md:justify-center">
           <img
             src={image}
-            className="max-w-sm rounded-lg shadow-2xl"
-            alt="Book Cover"
+            className="max-w-sm rounded-lg shadow-2xl h-full w-full object-contain"
+            alt={`${bookName} cover photo`}
           />
         </div>
-        <div className="text-left my-5 text-wrap w-1/2 px-4">
+        <div className="text-left my-5 text-wrap lg:col-span-3  p-5  ">
           <h1 className="text-5xl font-bold mb-4">{bookName}</h1>
-          <p className="py-1 font-semibold">Overview:</p>
-          <p>{review}</p>
-          <p className="py-1 font-semibold">Author: {author}</p>
-          <p className="py-1 font-semibold">Published By: {publisher}</p>
-          <p className="py-1 font-semibold">
-            Year of Publish: {yearOfPublishing}
-          </p>
-          <p className="py-1 font-semibold">Category: {category}</p>
-          <p className="py-1 font-semibold">Available Copies: {quantity}</p>
+
+          <p className="py-5">{review}</p>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className="p-2 border ">
+              <p className="font-semibold py-1">Author </p>
+              <p>{author}</p>
+            </div>
+            <div className="p-2 border ">
+              <p className="py-1 font-semibold">Published By </p>
+              <p>{publisher}</p>
+            </div>
+            <div className="p-2 border ">
+              <p className="py-1 font-semibold">
+                Year of Publish
+              </p>
+              <p >
+               {yearOfPublishing}
+              </p>
+            </div>
+            <div className="p-2 border ">
+              <p className="py-1 font-semibold">Category</p>
+              <p className="">{category}</p>
+            </div>
+            <div className="p-2 border ">
+              <p className="py-1 font-semibold">Available Copies</p>
+              <p className="  ">{quantity}</p>
+            </div>
+          </div>
 
           <button
             className="btn btn-primary btn-wide py-2 mt-5"

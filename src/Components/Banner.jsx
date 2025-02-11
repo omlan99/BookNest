@@ -2,9 +2,9 @@ import Slider from "./Slider";
 
 const Banner = () => {
     return (
-        <div className="flex flex-col justify-center">
+        <div className=" bg-red-600">
  
-            <div className="mx-auto">
+            <div className="">
             <Slider></Slider>
             </div>
         </div>

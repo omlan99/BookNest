@@ -11,7 +11,7 @@ import img3 from '../assets/image3.jpg'
 // import './styles.css'
 const Slider = () => {
     return (
-        <div>
+        <div className='flex justify-center'>
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
@@ -29,12 +29,12 @@ const Slider = () => {
                 
                 loop = {true}
                 navigation={true}
-                className='mySwiper'
+                className='mySwiper w-full '
             >
-                <SwiperSlide><img src={img1} alt="" /></SwiperSlide>
-                <SwiperSlide><img src={img2} alt="" /></SwiperSlide>
-                <SwiperSlide><img src={img3} alt="" /></SwiperSlide>
-              
+                <SwiperSlide ><img className='w-full' src={img1} alt="" /></SwiperSlide>
+                <SwiperSlide ><img className='w-full' src={img2} alt="" /></SwiperSlide>
+                <SwiperSlide ><img className='w-full' src={img3} alt="" /></SwiperSlide>
+               
             </Swiper>
         </div>
     );
