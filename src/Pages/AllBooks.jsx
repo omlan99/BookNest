@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Book from "./Book";
 import { useLocation } from "react-router-dom";
+import { AuthContext } from "../Context/AuthProvider";
 
 const AllBooks = () => {
-
+    const {loader, setLoader} = useContext(AuthContext)
     const [books, setBooks] = useState([])
     const location = useLocation();
 
@@ -27,12 +28,15 @@ const AllBooks = () => {
     
     return (
         <div >
-            <p> Total Books In The Libaray {books.length}</p>
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
             {
-                books.map((book, index) =><Book key={index} book ={book}></Book>)
+                books? <> <p> Total Books In The Libaray {books.length}</p>
+                <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
+                {
+                    books.map((book, index) =><Book key={index} book ={book}></Book>)
+                }
+                </div></> : setLoader(true) 
             }
-            </div>
+           
         </div>
     );
 };
