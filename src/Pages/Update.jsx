@@ -47,10 +47,10 @@ const Update = () => {
   };
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="px-6">
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 py-12">
-            <h2 className="text-4xl font-bold text-gray-900 ">
+            <h2 className="text-4xl font-bold text-gray-900 text-center">
               Update Book Information
             </h2>
 

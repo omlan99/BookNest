@@ -49,7 +49,7 @@ const AllBooks = () => {
       ) : (
         <>
           {" "}
-          
+          <div><h2 className="text-4xl text-center font-medium py-5">All Books In library</h2></div>
           <div className="grid lg:grid-cols-4 md:grid-cols-3 gap-6 px-5">
             {books.map((book, index) => (
               <Book key={index} book={book}></Book>

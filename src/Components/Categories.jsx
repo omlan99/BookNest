@@ -42,7 +42,7 @@ const Categories = () => {
         <>
           <div className="grid md:grid-cols-3- lg:grid-cols-4 gap-4  px-5 ">
             {categories.map((category, index) => (
-              <Link to={`/category/${category}`}>
+              <Link key={index} to={`/category/${category}`}>
                 <div key={index} className="card border p-4 cursor-pointer">
                   <h3 className="text-lg font-bold">{category}</h3>
                 </div>

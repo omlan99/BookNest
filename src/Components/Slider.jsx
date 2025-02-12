@@ -37,7 +37,7 @@ const Slider = () => {
                 {" "}
                 Searching for Your Next Read? <br /> Find It Here & Borrow Instantly!{" "}
               </p>
-                <Link to={"category"} smooth={true} duration={500} href="" className="btn">Show Books</Link>
+                <Link to={"category"} smooth={true} duration={500} href="" className="btn btn-primary">Show Books</Link>
             </div>
           </div>
         </SwiperSlide>
@@ -49,7 +49,7 @@ const Slider = () => {
                 {" "}
                 Your Library, Your Rules <br /> Borrow Anytime, Anywhere!{" "}
               </p>
-              <Link to={"category"} href="" className="btn">Show Books</Link>
+              <Link to={"category"} href="" className="btn btn-primary">Show Books</Link>
             </div>
           </div>
         </SwiperSlide>
@@ -61,7 +61,7 @@ const Slider = () => {
                 {" "}
                 One Click, Endless Stories! <br /> Borrow, Read, and Return with Ease! {" "}
               </p>
-              <Link to={"category"} href="" className="btn">Show Books</Link>
+              <Link to={"category"} href="" className="btn btn-primary">Show Books</Link>
             </div>
           </div>
         </SwiperSlide>

@@ -12,7 +12,7 @@ const Featured = () => {
     });
   }, []);
 
-  const slicedData = books.slice(0, 5);
+  const slicedData = books.slice(0, 8);
 
   return (
     <div className="mt-[100px] pt-[100px]">
@@ -20,7 +20,7 @@ const Featured = () => {
       <Swiper
         slidesPerView={4}
         centeredSlides={true}
-        spaceBetween={10}
+        spaceBetween={30}
         autoplay = {{
             delay :2000,
             disableOnInteraction :false,
@@ -37,9 +37,9 @@ const Featured = () => {
       >
         {slicedData.map((data, index) => (
           <SwiperSlide  key={index}>
-            <div className="overflow-hidden h-[200px] w-[120px] p-5" >
+            <div className="overflow-hidden h-[200px] w-[120px] lg:h-[400px] lg:w-[250px] p-5" >
             <img
-              className=" rounded-lg  h-full w-full object-contain"
+              className=" rounded-lg  h-full w-full object-cover"
               src={data.image}
               alt=""
             />

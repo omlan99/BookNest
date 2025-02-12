@@ -124,7 +124,7 @@ const Details = () => {
           />
         </div>
         <div className="text-left my-5 text-wrap lg:col-span-3  p-5  ">
-          <h1 className="text-5xl font-bold mb-4">{bookName}</h1>
+          <h1 className="text-4xl font-bold mb-4">{bookName}</h1>
 
           <p className="py-5">{review}</p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">

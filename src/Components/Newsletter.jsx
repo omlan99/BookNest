@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Newsletter = () => {
   return (
-    <div  className="space-y-2 mt-[100px]  bg-[#f4f0ef]  py-[100px]  text-center" id="newsletter">
+    <div  className="space-y-2 mt-[100px]  bg-[#0e2a13]  py-[100px]  text-center" id="newsletter">
       <h3 className="font-bold text-4xl">Sign up for our Monthly Newsletter!</h3>
       <p className="font-semibold pb-10">
         Want to be updated with new visa news
