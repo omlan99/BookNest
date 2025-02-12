@@ -49,7 +49,7 @@ const AllBooks = () => {
       ) : (
         <>
           {" "}
-          <p> Total Books In The Libaray {books.length}</p>
+          
           <div className="grid lg:grid-cols-4 md:grid-cols-3 gap-6 px-5">
             {books.map((book, index) => (
               <Book key={index} book={book}></Book>

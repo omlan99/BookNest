@@ -10,7 +10,7 @@ const Navbar = () => {
         <Link to={"/"}>Home</Link>
       </li>
       <li><ScrollLink to="category" smooth={true} duration={500}>Categories</ScrollLink></li>
-      <li><ScrollLink to="about" smooth={true} duration={500}>About US</ScrollLink></li>
+      <li><ScrollLink to="about" smooth={true} duration={500}>About Us</ScrollLink></li>
       <li><ScrollLink to="newsletter" smooth={true} duration={500}>Newsletter</ScrollLink></li>
       <>
        {
