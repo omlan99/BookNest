@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
-
+import {  Link as ScrollLink } from "react-scroll";
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
   const links = (
@@ -9,17 +9,21 @@ const Navbar = () => {
       <li>
         <Link to={"/"}>Home</Link>
       </li>
-
+      <li><ScrollLink to="category" smooth={true} duration={500}>Categories</ScrollLink></li>
+      <li><ScrollLink to="about" smooth={true} duration={500}>About US</ScrollLink></li>
+      <li><ScrollLink to="newsletter" smooth={true} duration={500}>Newsletter</ScrollLink></li>
       <>
-        <li>
-          <Link to={"/allBooks"}>All Books</Link>
-        </li>
-        <li>
-          <Link to={"/addBooks"}>Add Books</Link>
-        </li>
-        <li>
-          <Link to={"/borrowedBooks"}>Borrowed Books</Link>
-        </li>
+       {
+        user ? <> <li>
+        <Link to={"/allBooks"}>All Books</Link>
+      </li>
+      <li>
+        <Link to={"/addBooks"}>Add Books</Link>
+      </li>
+      <li>
+        <Link to={"/borrowedBooks"}>Borrowed Books</Link>
+      </li></> : <></>
+       }
       </>
     </>
   );
@@ -46,7 +50,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow space-y-1"
             >
               {links}
             </ul>
@@ -54,7 +58,7 @@ const Navbar = () => {
           <a className="btn btn-ghost text-xl">Book Nest</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{links}</ul>
+          <ul className="menu menu-horizontal px-1 space-x-1">{links}</ul>
         </div>
         <div className="navbar-end gap-3">
           {user ? (

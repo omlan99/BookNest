@@ -37,7 +37,7 @@ const Slider = () => {
                 {" "}
                 Searching for Your Next Read? <br /> Find It Here & Borrow Instantly!{" "}
               </p>
-                <Link to={"category"} href="" className="btn">Show Books</Link>
+                <Link to={"category"} smooth={true} duration={500} href="" className="btn">Show Books</Link>
             </div>
           </div>
         </SwiperSlide>

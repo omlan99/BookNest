@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 
 const About = () => {
   return (
-    <div>
-      <div className="grid lg:grid-cols-2 text-left gap-10 px-5 mb-20">
+    
+      <div className="grid lg:grid-cols-2 text-left gap-10 px-5 mt-[100px] pt-20 py-5" id="about">
         <div className="space-y-3 my-auto order-last lg:order-first">
-          <h3 className="font-medium text-3xl">For the Love of Reading</h3>
+          <h3 className="font-medium text-3xl">What We Have To Offer</h3>
           <div>
             <h6 className="font-semibold py-2">Selection</h6>
             <p>
@@ -42,7 +42,7 @@ const About = () => {
             <Lottie animationData={Animationdata}></Lottie>
         </div>
       </div>
-    </div>
+    
   );
 };
 

@@ -121,7 +121,7 @@ const Borrowedbooks = () => {
       ) : (
         <>
           <div className="w-full  min-h-screen flex justify-center items-center">
-            <p className="text-2xl font-bold">
+            <p className="text-3xl font-bold px-5 text-center">
               You did not borrowed any books yet
             </p>
           </div>
