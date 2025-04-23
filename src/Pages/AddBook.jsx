@@ -47,7 +47,7 @@ const AddBook = () => {
             <div className="sm:col-span-3">
               <label
                 htmlFor="bookName"
-                className="block text-sm/6 font-medium text-gray-900"
+                className="block text-sm/6 font-medium"
               >
                 Book Name
               </label>
@@ -60,7 +60,7 @@ const AddBook = () => {
                   })}
                   type="text"
                   autoComplete="given-name"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
               </div>
             </div>
@@ -68,7 +68,7 @@ const AddBook = () => {
             <div className="sm:col-span-3">
               <label
                 htmlFor="image"
-                className="block text-sm/6 font-medium text-gray-900"
+                className="block text-sm/6 font-medium"
               >
                 Book Image
               </label>
@@ -81,14 +81,14 @@ const AddBook = () => {
                   })}
                   type="url"
                   autoComplete=""
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
               </div>
             </div>
             <div className="sm:col-span-2">
               <label
                 htmlFor="category"
-                className="block text-sm/6 font-medium text-gray-900"
+                className="block text-sm/6 font-medium"
               >
                 Category
               </label>
@@ -99,7 +99,7 @@ const AddBook = () => {
                     required: "Visa Type is required",
                   })}
                   autoComplete=""
-                  className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pl-3 pr-8 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pl-3 pr-8 text-base outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 >
                   <option disabled selected>
                     Category
@@ -120,7 +120,7 @@ const AddBook = () => {
             <div className="sm:col-span-2 ">
               <label
                 htmlFor="quantity"
-                className="block text-sm/6 font-medium text-gray-900"
+                className="block text-sm/6 font-medium"
               >
                 Quantity
               </label>
@@ -132,7 +132,7 @@ const AddBook = () => {
                     required: "quantity is required",
                   })}
                   autoComplete="address-level2"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
               </div>
             </div>
@@ -140,7 +140,7 @@ const AddBook = () => {
             <div className="sm:col-span-2 ">
               <label
                 htmlFor="author"
-                className="block text-sm/6 font-medium text-gray-900"
+                className="block text-sm/6 font-medium"
               >
                 Author Name
               </label>
@@ -152,14 +152,14 @@ const AddBook = () => {
                   })}
                   type="text"
                   autoComplete="address-level2"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
               </div>
             </div>
             <div className="sm:col-span-2 ">
               <label
                 htmlFor="review"
-                className="block text-sm/6 font-medium text-gray-900"
+                className="block text-sm/6 font-medium"
               >
                 Short Description
               </label>
@@ -171,7 +171,7 @@ const AddBook = () => {
                   })}
                   type="text"
                   autoComplete="address-level2"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
               </div>
             </div>
@@ -179,7 +179,7 @@ const AddBook = () => {
             <div className="sm:col-span-2">
               <label
                 htmlFor="yearOfPublishing"
-                className="block text-sm/6 font-medium text-gray-900"
+                className="block text-sm/6 font-medium"
               >
                 Year of Publishing
               </label>
@@ -188,14 +188,14 @@ const AddBook = () => {
                   id="yearOfPublishing"
                   {...register("yearOfPublishing", { required: true })}
                   type="number"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
               </div>
             </div>
             <div className="sm:col-span-2">
               <label
                 htmlFor="totalPages"
-                className="block text-sm/6 font-medium text-gray-900"
+                className="block text-sm/6 font-medium"
               >
                 Number Of Page
               </label>
@@ -204,14 +204,14 @@ const AddBook = () => {
                   id="totalPages"
                   {...register("totalPages", { required: true })}
                   type="number"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
               </div>
             </div>
             <div className="sm:col-span-2">
               <label
                 htmlFor="rating"
-                className="block text-sm/6 font-medium text-gray-900"
+                className="block text-sm/6 font-medium"
               >
                 Rating
               </label>
@@ -224,7 +224,7 @@ const AddBook = () => {
                     max: { value: 5 },
                   })}
                   type="number"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
               </div>
             </div>
@@ -232,7 +232,7 @@ const AddBook = () => {
             <div className="col-span-full">
               <label
                 htmlFor="about"
-                className="block text-sm/6 font-medium text-gray-900"
+                className="block text-sm/6 font-medium"
               >
                 Book Content
               </label>
@@ -242,7 +242,7 @@ const AddBook = () => {
                   id="about"
                   {...register("description")}
                   rows={3}
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   defaultValue={""}
                 />
               </div>

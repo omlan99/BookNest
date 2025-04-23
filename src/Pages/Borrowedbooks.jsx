@@ -12,8 +12,8 @@ const Borrowedbooks = () => {
     if (!user?.email) return;
     axios
       .get(
-        `http://localhost:5000/borrow_books?email=${user.email}`
-        // `https://book-nest-server-wine.vercel.app/borrow_books?email=${user.email}`
+        // `http://localhost:5000/borrow_books?email=${user.email}`
+        `https://book-nest-server-wine.vercel.app/borrow_books?email=${user.email}`
       )
       .then((res) => {
         console.log(res.data);
@@ -38,12 +38,14 @@ const Borrowedbooks = () => {
           text: "book has been returned.",
           icon: "success",
         });
-        axios.delete(`http://localhost:5000/return/${id}`).then((res) => {
+        // axios.delete(`http://localhost:5000/return/${id}`).then((res) => {
+        axios.delete(`https://book-nest-server-wine.vercel.app/return/${id}`).then((res) => {
           if (res.data.deletedCount) {
             // console.log(res.data);
           }
         });
-        axios.patch(`http://localhost:5000/return/${bookId}`);
+        // axios.patch(`http://localhost:5000/return/${bookId}`);
+        axios.patch(`https://book-nest-server-wine.vercel.app/return/${bookId}`);
         setBorrowedBooks(
           borrowedBooks.filter((borrowedBook) => borrowedBook._id !== id)
         );

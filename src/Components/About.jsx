@@ -35,7 +35,7 @@ const About = () => {
             </p>
           </div>
           <div className="py-4">
-            <Link to="/allBooks" className="btn bg-[#018574] text-white font-bold">See All Books</Link>
+            <Link to="/allBooks" className="btn bg-primary  ">See All Books</Link>
             </div>
         </div>
         <div classname="">

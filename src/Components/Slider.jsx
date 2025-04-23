@@ -44,8 +44,8 @@ const Slider = () => {
         <SwiperSlide>
         <div className="relative w-full h-[440px] ">
             <img className="w-full h-full object-cover " src={img2} alt="" />
-            <div className="absolute bg-black bg-opacity-50 h-full z-20  inset-0 flex flex-col  justify-center items-center">
-            <p className="  text-white text-center text-4xl font-bold max-w-[800px] p-5 ">
+            <div className="absolute ex bg-black bg-opacity-50 h-full z-20  inset-0 flex flex-col  justify-center items-center">
+            <p className="   text-white text-center text-4xl font-bold max-w-[800px] p-5 ">
                 {" "}
                 Your Library, Your Rules <br /> Borrow Anytime, Anywhere!{" "}
               </p>

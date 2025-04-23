@@ -11,8 +11,8 @@ const Details = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/book_details/${id}`)
-      // .get(`https://book-nest-server-wine.vercel.app/book_details/${id}`)
+      // .get(`http://localhost:5000/book_details/${id}`)
+      .get(`https://book-nest-server-wine.vercel.app/book_details/${id}`)
       .then((res) => {
         setDetails(res.data);
       })
@@ -76,8 +76,8 @@ const Details = () => {
           };
 
           const borrowResponse = await axios.post(
-            `http://localhost:5000/borrow_books`,
-            // "https://book-nest-server-wine.vercel.app/borrow_books",
+            // `http://localhost:5000/borrow_books`,
+            "https://book-nest-server-wine.vercel.app/borrow_books",
             newData
           );
           if (borrowResponse.data.message) {
@@ -92,7 +92,8 @@ const Details = () => {
             // Update book quantity
 
             const updateResponse = await axios.patch(
-              `http://localhost:5000/book_details/${id}`
+              // `http://localhost:5000/book_details/${id}`
+              `https://book-nest-server-wine.vercel.app/${id}`
             );
             if (updateResponse.data.modifiedCount) {
               setDetails((prev) => ({

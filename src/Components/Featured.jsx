@@ -7,7 +7,8 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 const Featured = () => {
   const [books, setBooks] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/").then((res) => {
+    // axios.get("http://localhost:5000/").then((res) => {
+    axios.get("https://book-nest-server-wine.vercel.app/").then((res) => {
       setBooks(res.data);
     });
   }, []);

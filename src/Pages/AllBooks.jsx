@@ -5,6 +5,7 @@ import { Oval } from "react-loader-spinner";
 
 const AllBooks = () => {
   const [loading, setLoading] = useState(true);
+  const [isAscending, setIsAscending] = useState(true);
   const [books, setBooks] = useState([]);
   const location = useLocation();
 
@@ -28,7 +29,19 @@ const AllBooks = () => {
       });
   }, [location.search]);
   // console.log(books)
-
+  const handleSort = () => {
+    const newSort = !isAscending;
+    setIsAscending(newSort);
+  
+    // Create a new copy of the books array and sort it using localeCompare.
+    const sortedBooks = [...books].sort((a, b) => {
+      return newSort
+        ? a.bookName.localeCompare(b.bookName)
+        : b.bookName.localeCompare(a.bookName);
+    });
+  
+    setBooks(sortedBooks);
+  };
   return (
     <div>
       {loading ? (
@@ -49,7 +62,16 @@ const AllBooks = () => {
       ) : (
         <>
           {" "}
-          <div><h2 className="text-4xl text-center font-medium py-5">All Books In library</h2></div>
+          <div>
+            <h2 className="text-4xl text-center font-medium py-10">
+              All Books In library
+            </h2>
+          </div>
+          <div className="py-5 px-10">
+            <button className="btn btn-secondary" onClick={handleSort}>
+              {isAscending ? "Sort Descending" : "Sort Ascending"}
+            </button>
+          </div>
           <div className="grid lg:grid-cols-4 md:grid-cols-3 gap-6 px-5">
             {books.map((book, index) => (
               <Book key={index} book={book}></Book>

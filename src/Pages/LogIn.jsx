@@ -44,7 +44,7 @@ const onSubmit =(data) =>{
       <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
          
-          <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+          <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight">
             Sign in to your account
           </h2>
         </div>
@@ -54,7 +54,7 @@ const onSubmit =(data) =>{
             <div>
               <label
                 for="email"
-                class="block text-sm/6 font-medium text-gray-900 text-left"
+                class="block text-sm/6 font-medium text-left"
               >
                 Email address
               </label>
@@ -66,7 +66,7 @@ const onSubmit =(data) =>{
                   id="email"
                   autocomplete="email"
                  
-                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
                  {errors.email?.type === "required" && (
                   <p className="text-red-600">Please Enter a password</p>
@@ -78,7 +78,7 @@ const onSubmit =(data) =>{
               <div class="flex items-center justify-between">
                 <label
                   for="password"
-                  class="block text-sm/6 font-medium text-gray-900"
+                  class="block text-sm/6 font-medium"
                 >
                   Password
                 </label>
@@ -99,7 +99,7 @@ const onSubmit =(data) =>{
                   id="password"
                   autocomplete="current-password"
                  
-                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
                  {errors.password?.type === "required" && (
                   <p className="text-red-600">Please Enter a password</p>
@@ -119,7 +119,7 @@ const onSubmit =(data) =>{
           <div className="my-4">
             <button
               onClick={handleGoogle}
-              className="btn  bg-white border-gray-500 text-xl font-medium w-full"
+              className="btn border-gray-500 text-xl font-medium w-full"
             >
               <FcGoogle /> Google
             </button>

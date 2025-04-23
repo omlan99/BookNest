@@ -49,7 +49,7 @@ const SignUp = () => {
       <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
        
-          <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+          <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight">
             Create a new account
           </h2>
         </div>
@@ -59,7 +59,7 @@ const SignUp = () => {
             <div>
               <label
                 for="email"
-                class="block text-sm/6 font-medium text-gray-900 text-left"
+                class="block text-sm/6 font-medium text-left"
               >
                 User Name
               </label>
@@ -69,7 +69,7 @@ const SignUp = () => {
                   name="name"
                   {...register('name', {required: true})}
                 
-                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
                 {errors.name?.type === "required" && (
                   <p className="text-red-600">Please Enter Your Name </p>
@@ -80,7 +80,7 @@ const SignUp = () => {
             <div>
               <label
                 for="email"
-                class="block text-sm/6 font-medium text-gray-900 text-left"
+                class="block text-sm/6 font-medium text-left"
               >
                 Upload a profile Photo
               </label>
@@ -89,7 +89,7 @@ const SignUp = () => {
                   type="url"
                   name="photo"
                   {...register("photo", {required : true})}
-                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
                 {errors.photo?.type === "required" && (
                   <p className="text-red-600">Please Enter URL of Your Photo</p>
@@ -100,7 +100,7 @@ const SignUp = () => {
             <div>
               <label
                 for="email"
-                class="block text-sm/6 font-medium text-gray-900 text-left"
+                class="block text-sm/6 font-medium text-left"
               >
                 Email address
               </label>
@@ -112,7 +112,7 @@ const SignUp = () => {
                   id="email"
                   autocomplete="email"
                   
-                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
                 {errors.email?.type === "required" && (
                   <p className="text-red-600">Please Enter a password</p>
@@ -124,7 +124,7 @@ const SignUp = () => {
               <div class="flex items-center justify-between">
                 <label
                   for="password"
-                  class="block text-sm/6 font-medium text-gray-900"
+                  class="block text-sm/6 font-medium"
                 >
                   Password
                 </label>
@@ -138,7 +138,7 @@ const SignUp = () => {
                   id="password"
                   autocomplete="current-password"
                 
-                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  class="block w-full rounded-md bg-white px-3 py-1.5 text-base outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
                  {errors.password?.type === "required" && (
                   <p className="text-red-600">Please Enter a password</p>
@@ -169,7 +169,7 @@ const SignUp = () => {
           <div className="my-4">
             <button
               onClick={handleGoogle}
-              className="btn  bg-white border-gray-500 text-xl font-medium w-full"
+              className="btn  border-gray-500 text-xl font-medium w-full"
             >
               <FcGoogle /> Google
             </button>

@@ -50,7 +50,7 @@ const Update = () => {
       <form onSubmit={handleSubmit(onSubmit)} className="px-6">
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 py-12">
-            <h2 className="text-4xl font-bold text-gray-900 text-center">
+            <h2 className="text-4xl font-bold text-center">
               Update Book Information
             </h2>
 
@@ -58,7 +58,7 @@ const Update = () => {
               <div className="sm:col-span-2 sm:col-start-1">
                 <label
                   htmlFor="name"
-                  className="block text-sm/6 font-medium text-gray-900"
+                  className="block text-sm/6 font-medium"
                 >
                   Name of the Book
                 </label>
@@ -67,7 +67,7 @@ const Update = () => {
                     id="name"
                     {...register("bookName")}
                     type="text"
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   />
                 </div>
               </div>
@@ -75,7 +75,7 @@ const Update = () => {
               <div className="sm:col-span-2">
                 <label
                   htmlFor="image"
-                  className="block text-sm/6 font-medium text-gray-900"
+                  className="block text-sm/6 font-medium"
                 >
                   Book Image
                 </label>
@@ -84,7 +84,7 @@ const Update = () => {
                     id="image"
                     {...register("image")}
                     type="url"
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   />
                 </div>
               </div>
@@ -92,7 +92,7 @@ const Update = () => {
               <div className="sm:col-span-2">
                 <label
                   htmlFor="author"
-                  className="block text-sm/6 font-medium text-gray-900"
+                  className="block text-sm/6 font-medium"
                 >
                   Author Name
                 </label>
@@ -101,7 +101,7 @@ const Update = () => {
                     {...register("author")}
                     name="author"
                     type="text"
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   />
                 </div>
               </div>
@@ -109,7 +109,7 @@ const Update = () => {
               <div className="sm:col-span-3">
                 <label
                   htmlFor="category"
-                  className="block text-sm/6 font-medium text-gray-900"
+                  className="block text-sm/6 font-medium"
                 >
                   Category
                 </label>
@@ -117,7 +117,7 @@ const Update = () => {
                   <select
                     id="category"
                     name="country"
-                    className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pl-3 pr-8 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                    className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pl-3 pr-8 text-base outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   >
                     {categories.map((category) => (
                       <option>{category}</option>
@@ -132,7 +132,7 @@ const Update = () => {
               <div className="sm:col-span-2">
                 <label
                   htmlFor="author"
-                  className="block text-sm/6 font-medium text-gray-900"
+                  className="block text-sm/6 font-medium"
                 >
                   Rating
                 </label>
@@ -141,7 +141,7 @@ const Update = () => {
                     id="rating"
                     name="author"
                     type="text"
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   />
                 </div>
               </div>

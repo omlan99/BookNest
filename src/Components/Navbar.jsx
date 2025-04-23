@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
 import { Link as ScrollLink } from "react-scroll";
+import logo from "../assets/book_home_logo_design__1_-removebg-preview.png"
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
   const links = (
@@ -10,7 +11,7 @@ const Navbar = () => {
         <Link to={"/"}>Home</Link>
       </li>
       <li>
-        <ScrollLink to="category" smooth={true} duration={500}>
+        <ScrollLink to="category">
           Categories
         </ScrollLink>
       </li>
@@ -55,18 +56,18 @@ const Navbar = () => {
   },[theme] );
   const handleToggle = (e) =>{
     if(e.target.checked){
-      setTheme("dark")
+      setTheme("myDarkTheme")
     }else{
-      setTheme("light ")
+      setTheme("myLightTheme")
     }
   }
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 navcontainer">
+    <div className="fixed bg-base-300  border-b-2 top-0 left-0 w-full z-50 navcontainer">
       <div className="navbar container mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn bg-[#2ecc4e] lg:hidden">
+            <div tabIndex={0} role="button" className="btn lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -128,16 +129,16 @@ const Navbar = () => {
                   {<img src={user.photoURL} />}
                 </div>
               </div>
-              <Link to="/login" onClick={signOutUser} className="btn">
+              <Link to="/login" onClick={signOutUser} className="btn btn-primary">
                 Log Out
               </Link>
             </>
           ) : (
             <>
-              <Link to="/login" className="btn">
+              <Link to="/login" className="btn btn-primary">
                 Log In
               </Link>
-              <Link to="/signUp" className="btn">
+              <Link to="/signUp" className="btn btn-primary">
                 Sign Up
               </Link>
             </>

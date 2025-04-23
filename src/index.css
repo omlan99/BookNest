@@ -2,8 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-:root[data-theme="dark"] .navcontainer  {
-    background-color: #030703 !important;  /* Replace with your desired color */
-    /* Optionally adjust text color, border, etc. */
-    color: #e3f2e7  !important;
-  }
