@@ -185,7 +185,7 @@ const Details = () => {
                     type="text"
                     name="name"
                     placeholder="Name"
-                    className="input input-bordered w-full"
+                    className="input input-bordered bg-white text-black w-full"
                     required
                   />
                 </div>
@@ -198,7 +198,7 @@ const Details = () => {
                     type="email"
                     name="email"
                     placeholder="Email"
-                    className="input input-bordered w-full"
+                    className="input input-bordered bg-white text-black w-full"
                     required
                   />
                 </div>
@@ -209,7 +209,7 @@ const Details = () => {
                   <input
                     type="date"
                     name="date"
-                    className="input input-bordered w-full"
+                    className="input input-bordered bg-white text-black w-full"
                     required
                   />
                 </div>
