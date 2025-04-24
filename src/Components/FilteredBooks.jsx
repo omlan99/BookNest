@@ -37,7 +37,7 @@ const FilteredBooks = () => {
       />
     </div></> : <>  <div className="grid lg:grid-cols-4 md:grid-cols-3 gap-6 px-5">
       {books.map((book, index) => (
-        <div key={index} className="card card-compact bg-base-100 shadow-md">
+        <div key={index} className="card card-compact bg-base-100 border shadow-md">
           <figure className="overflow-hidden h-[200px] p-5">
             <img
               src={book.image}
