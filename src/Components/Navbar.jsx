@@ -12,17 +12,17 @@ const Navbar = () => {
         <Link to={"/"}>Home</Link>
       </li>
       <li>
-        <HashLink smooth to="category">
+        <HashLink smooth to="/#category">
           Categories
         </HashLink>
       </li>
       <li>
-        <HashLink smooth to="about" >
+        <HashLink smooth to="/#about" >
           About Us
         </HashLink>
       </li>
       <li>
-        <HashLink smooth to="newsletter"  >
+        <HashLink smooth to="/#newsletter"  >
           Newsletter
         </HashLink>
       </li>
