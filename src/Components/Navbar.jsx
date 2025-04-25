@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
 import { Link as ScrollLink } from "react-scroll";
 import logo from "../assets/book_home_logo_design__1_-removebg-preview.png"
+import { HashLink } from "react-router-hash-link";
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
   const links = (
@@ -11,19 +12,19 @@ const Navbar = () => {
         <Link to={"/"}>Home</Link>
       </li>
       <li>
-        <ScrollLink to="category">
+        <HashLink smooth to="category">
           Categories
-        </ScrollLink>
+        </HashLink>
       </li>
       <li>
-        <ScrollLink to="about" smooth={true} duration={500}>
+        <HashLink smooth to="about" >
           About Us
-        </ScrollLink>
+        </HashLink>
       </li>
       <li>
-        <ScrollLink to="newsletter" smooth={true} duration={500}>
+        <HashLink smooth to="newsletter"  >
           Newsletter
-        </ScrollLink>
+        </HashLink>
       </li>
       <>
         {user ? (
