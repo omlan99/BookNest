@@ -35,7 +35,7 @@ const Slider = () => {
             <div className="absolute bg-black bg-opacity-50  h-full z-20  inset-0 flex flex-col  justify-center items-center">
               <p className="  text-white text-center text-4xl font-bold max-w-[800px] p-5 ">
                 {" "}
-                Searching for Your Next Read? <br /> Find It Here & Borrow Instantly!{" "}
+                Borrow Learn Return{" "}
               </p>
                 <Link to={"category"} smooth={true} duration={500} href="" className="btn btn-primary">Show Books</Link>
             </div>
@@ -47,7 +47,7 @@ const Slider = () => {
             <div className="absolute ex bg-black bg-opacity-50 h-full z-20  inset-0 flex flex-col  justify-center items-center">
             <p className="   text-white text-center text-4xl font-bold max-w-[800px] p-5 ">
                 {" "}
-                Your Library, Your Rules <br /> Borrow Anytime, Anywhere!{" "}
+                Why buy when you can borrow{" "}
               </p>
               <Link to={"category"} href="" className="btn btn-primary">Show Books</Link>
             </div>
@@ -59,7 +59,7 @@ const Slider = () => {
             <div className="absolute bg-black bg-opacity-50 h-full z-20  inset-0 flex flex-col  justify-center items-center">
             <p className="  text-white text-center text-4xl font-bold max-w-[800px] p-5 ">
                 {" "}
-                One Click, Endless Stories! <br /> Borrow, Read, and Return with Ease! {" "}
+                Stories are one click away {" "}
               </p>
               <Link to={"category"} href="" className="btn btn-primary">Show Books</Link>
             </div>
